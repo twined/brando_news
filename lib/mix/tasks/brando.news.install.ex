@@ -45,10 +45,6 @@ defmodule Mix.Tasks.BrandoNews.Install do
       target = Path.join(target_dir, target_path)
 
       case format do
-        :keep -> File.mkdir_p!(target)
-        :text -> create_file(target, render(source))
-        :copy -> File.mkdir_p!(Path.dirname(target))
-                 File.copy!(Path.join(@root, source), target)
         :eex  -> contents = EEx.eval_string(render(source), binding, file: source)
                  create_file(target, contents)
       end

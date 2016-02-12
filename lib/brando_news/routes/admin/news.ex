@@ -18,20 +18,6 @@ defmodule Brando.News.Routes.Admin do
   @doc """
   Defines "RESTful" endpoints for the news resource.
   """
-  defmacro post_routes(path, ctrl, opts) do
-    add_post_routes(path, ctrl, opts)
-  end
-
-  @doc """
-  See post_routes/2
-  """
-  defmacro post_routes(path, opts) do
-    add_post_routes(path, PostController, opts)
-  end
-
-  @doc """
-  See post_routes/2
-  """
   defmacro post_routes(path), do:
     add_post_routes(path, PostController, [])
 
