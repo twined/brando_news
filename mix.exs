@@ -31,11 +31,11 @@ defmodule BrandoNews.Mixfile do
     [{:phoenix, "~> 1.1"},
      {:gettext, "~> 0.9.0"},
 
-     {:brando, github: "twined/brando", optional: true},
-
      {:phoenix_ecto, "~> 2.0", only: :test},
      {:ex_machina, "~> 0.6.1", only: :test},
      {:excoveralls, "~> 0.4", only: :test},
+
+     {:brando, github: "twined/brando", optional: true},
 
      # Documentation dependencies
      {:ex_doc, "~> 0.11", only: :docs},
