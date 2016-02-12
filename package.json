@@ -1,0 +1,19 @@
+{
+  "name": "brando_news",
+  "version": "0.1.0-dev",
+  "description": "Brando News",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twined/brando_news.git"
+  },
+  "files": [
+    "LICENSE.md",
+    "package.json"
+  ],
+  "author": "Twined Networks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twined/brando_news/issues"
+  },
+  "homepage": "https://github.com/twined/brando_news"
+}

@@ -1,0 +1,191 @@
+## `msgid`s in this file come from POT (.pot) files. Do not add, change, or
+## remove `msgid`s manually here as they're tied to the ones in the
+## corresponding POT file (with the same domain). Use `mix gettext.extract
+## --merge` or `mix gettext.merge` to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: nb\n"
+
+#: lib/brando_news/menus/news_menu.ex:12
+msgid "Add new"
+msgstr "Legg til"
+
+#: web/templates/admin/post/show.html.eex:6
+msgid "Back to index"
+msgstr "Tilbake til oversikten"
+
+#: web/controllers/admin/post_controller.ex:137
+msgid "Confirm deletion"
+msgstr "Bekreft sletting"
+
+#: web/models/post.ex:135
+msgid "Cover"
+msgstr "Cover"
+
+#: web/models/post.ex:141
+msgid "Creator"
+msgstr "Opprettet av"
+
+#: web/models/post.ex:139
+msgid "Data"
+msgstr "Data"
+
+#: web/templates/admin/post/delete_confirm.html.eex:3
+#: web/templates/admin/post/index.html.eex:9
+msgid "Delete post"
+msgstr "Slett post"
+
+#: lib/brando_news/forms/post_form.ex:21
+msgid "Deleted"
+msgstr "Sletted"
+
+#: lib/brando_news/forms/post_form.ex:18
+msgid "Draft"
+msgstr "Utkast"
+
+#: web/controllers/admin/post_controller.ex:102
+#: web/controllers/admin/post_controller.ex:126
+#: web/templates/admin/post/edit.html.eex:1
+#: web/templates/admin/post/index.html.eex:8
+#: web/templates/admin/post/show.html.eex:9
+msgid "Edit post"
+msgstr "Endre post"
+
+#: web/templates/admin/post/not_found.html.eex:1
+msgid "Entry not found"
+msgstr "Oppføring fantes ikke"
+
+#: web/controllers/admin/post_controller.ex:88
+#: web/controllers/admin/post_controller.ex:127
+msgid "Errors in form"
+msgstr "Feil i skjema"
+
+#: web/models/post.ex:133
+msgid "Featured"
+msgstr "Fremhevet"
+
+#: web/models/post.ex:140
+msgid "HTML"
+msgstr "HTML"
+
+#: web/models/post.ex:136
+msgid "Header"
+msgstr "Overskrift"
+
+#: lib/brando_news/menus/news_menu.ex:11
+msgid "Index"
+msgstr "Oversikt"
+
+#: web/controllers/admin/post_controller.ex:30
+#: web/templates/admin/post/index.html.eex:1
+msgid "Index - posts"
+msgstr "Postoversikt"
+
+#: web/models/post.ex:147
+msgid "Inserted at"
+msgstr "Opprettet"
+
+#: web/models/post.ex:134
+msgid "Language"
+msgstr "Språk"
+
+#: web/models/post.ex:138
+msgid "Lead"
+msgstr "Ingress"
+
+#: web/models/post.ex:142
+msgid "META description"
+msgstr "META beskrivelse"
+
+#: web/models/post.ex:143
+msgid "META keywords"
+msgstr "META nøkkelord"
+
+#: web/controllers/admin/post_controller.ex:67
+#: web/controllers/admin/post_controller.ex:85
+#: web/templates/admin/post/index.html.eex:18
+#: web/templates/admin/post/new.html.eex:1
+msgid "New post"
+msgstr "Ny post"
+
+#: lib/brando_news/menus/news_menu.ex:10
+msgid "News"
+msgstr "Nyheter"
+
+#: web/templates/admin/post/index.html.eex:14
+msgid "No posts"
+msgstr "Ingen poster"
+
+#: lib/brando_news/forms/post_form.ex:20
+msgid "Pending"
+msgstr "Venter"
+
+#: web/controllers/admin/post_controller.ex:81
+msgid "Post created"
+msgstr "Post opprettet"
+
+#: web/controllers/admin/post_controller.ex:150
+msgid "Post deleted"
+msgstr "Post slettet"
+
+#: web/controllers/admin/post_controller.ex:118
+msgid "Post updated"
+msgstr "Post oppdatert"
+
+#: web/controllers/admin/post_controller.ex:44
+msgid "Posts re-rendered"
+msgstr "Poster gjenskapt"
+
+#: web/models/post.ex:145
+msgid "Publish at"
+msgstr "Publiseringstidspunkt"
+
+#: lib/brando_news/forms/post_form.ex:19 web/models/post.ex:144
+msgid "Published"
+msgstr "Publisert"
+
+#: web/templates/admin/post/index.html.eex:28
+msgid "Re-render posts"
+msgstr "Gjenskap poster"
+
+#: web/controllers/admin/post_controller.ex:56
+#: web/templates/admin/post/index.html.eex:7
+#: web/templates/admin/post/show.html.eex:2
+msgid "Show post"
+msgstr "Vis post"
+
+#: web/models/post.ex:137
+msgid "Slug"
+msgstr "URL-tamp"
+
+#: web/models/post.ex:132
+msgid "Status"
+msgstr "Status"
+
+#: web/models/post.ex:146
+msgid "Tags"
+msgstr "Emneknagger"
+
+#: lib/brando_news/forms/post_form.ex:52
+msgid "The post is prioritized, taking precedence over pub. date"
+msgstr "Posten prioriteres over publiseringsdato"
+
+#: web/templates/admin/post/delete_confirm.html.eex:11
+msgid "This object cannot be restored!"
+msgstr "Dette objektet kan ikke gjenopprettes!"
+
+#: web/models/post.ex:148
+msgid "Updated at"
+msgstr "Oppdatert"
+
+#: web/templates/admin/post/delete_confirm.html.eex:6
+msgid "You are about to delete this object. Please check carefully, and note that any dependent objects will also be removed."
+msgstr "Du er i ferd med å slette dette objektet. Alle underordnede objekter slettes også."
+
+#: web/models/post.ex:127
+msgid "post"
+msgstr "post"
+
+#: web/models/post.ex:128
+msgid "posts"
+msgstr "poster"

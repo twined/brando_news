@@ -1,0 +1,2 @@
+defmodule BrandoNews do
+end

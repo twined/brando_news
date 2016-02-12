@@ -1,0 +1,188 @@
+## This file is a PO Template file. `msgid`s here are often extracted from
+## source code; add new translations manually only if they're dynamic
+## translations that can't be statically extracted. Run `mix
+## gettext.extract` to bring this file up to date. Leave `msgstr`s empty as
+## changing them here as no effect; edit them in PO (`.po`) files instead.
+#: lib/brando_news/menus/news_menu.ex:12
+msgid "Add new"
+msgstr ""
+
+#: web/templates/admin/post/show.html.eex:6
+msgid "Back to index"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:137
+msgid "Confirm deletion"
+msgstr ""
+
+#: web/models/post.ex:135
+msgid "Cover"
+msgstr ""
+
+#: web/models/post.ex:141
+msgid "Creator"
+msgstr ""
+
+#: web/models/post.ex:139
+msgid "Data"
+msgstr ""
+
+#: web/templates/admin/post/delete_confirm.html.eex:3
+#: web/templates/admin/post/index.html.eex:9
+msgid "Delete post"
+msgstr ""
+
+#: lib/brando_news/forms/post_form.ex:21
+msgid "Deleted"
+msgstr ""
+
+#: lib/brando_news/forms/post_form.ex:18
+msgid "Draft"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:102
+#: web/controllers/admin/post_controller.ex:126
+#: web/templates/admin/post/edit.html.eex:1
+#: web/templates/admin/post/index.html.eex:8
+#: web/templates/admin/post/show.html.eex:9
+msgid "Edit post"
+msgstr ""
+
+#: web/templates/admin/post/not_found.html.eex:1
+msgid "Entry not found"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:88
+#: web/controllers/admin/post_controller.ex:127
+msgid "Errors in form"
+msgstr ""
+
+#: web/models/post.ex:133
+msgid "Featured"
+msgstr ""
+
+#: web/models/post.ex:140
+msgid "HTML"
+msgstr ""
+
+#: web/models/post.ex:136
+msgid "Header"
+msgstr ""
+
+#: lib/brando_news/menus/news_menu.ex:11
+msgid "Index"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:30
+#: web/templates/admin/post/index.html.eex:1
+msgid "Index - posts"
+msgstr ""
+
+#: web/models/post.ex:147
+msgid "Inserted at"
+msgstr ""
+
+#: web/models/post.ex:134
+msgid "Language"
+msgstr ""
+
+#: web/models/post.ex:138
+msgid "Lead"
+msgstr ""
+
+#: web/models/post.ex:142
+msgid "META description"
+msgstr ""
+
+#: web/models/post.ex:143
+msgid "META keywords"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:67
+#: web/controllers/admin/post_controller.ex:85
+#: web/templates/admin/post/index.html.eex:18
+#: web/templates/admin/post/new.html.eex:1
+msgid "New post"
+msgstr ""
+
+#: lib/brando_news/menus/news_menu.ex:10
+msgid "News"
+msgstr ""
+
+#: web/templates/admin/post/index.html.eex:14
+msgid "No posts"
+msgstr ""
+
+#: lib/brando_news/forms/post_form.ex:20
+msgid "Pending"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:81
+msgid "Post created"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:150
+msgid "Post deleted"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:118
+msgid "Post updated"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:44
+msgid "Posts re-rendered"
+msgstr ""
+
+#: web/models/post.ex:145
+msgid "Publish at"
+msgstr ""
+
+#: lib/brando_news/forms/post_form.ex:19 web/models/post.ex:144
+msgid "Published"
+msgstr ""
+
+#: web/templates/admin/post/index.html.eex:28
+msgid "Re-render posts"
+msgstr ""
+
+#: web/controllers/admin/post_controller.ex:56
+#: web/templates/admin/post/index.html.eex:7
+#: web/templates/admin/post/show.html.eex:2
+msgid "Show post"
+msgstr ""
+
+#: web/models/post.ex:137
+msgid "Slug"
+msgstr ""
+
+#: web/models/post.ex:132
+msgid "Status"
+msgstr ""
+
+#: web/models/post.ex:146
+msgid "Tags"
+msgstr ""
+
+#: lib/brando_news/forms/post_form.ex:52
+msgid "The post is prioritized, taking precedence over pub. date"
+msgstr ""
+
+#: web/templates/admin/post/delete_confirm.html.eex:11
+msgid "This object cannot be restored!"
+msgstr ""
+
+#: web/models/post.ex:148
+msgid "Updated at"
+msgstr ""
+
+#: web/templates/admin/post/delete_confirm.html.eex:6
+msgid "You are about to delete this object. Please check carefully, and note that any dependent objects will also be removed."
+msgstr ""
+
+#: web/models/post.ex:127
+msgid "post"
+msgstr ""
+
+#: web/models/post.ex:128
+msgid "posts"
+msgstr ""
