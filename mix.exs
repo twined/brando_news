@@ -26,22 +26,14 @@ defmodule BrandoNews.Mixfile do
     [:gettext, :logger]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [{:phoenix, "~> 1.1"},
      {:gettext, "~> 0.9.0"},
 
      {:phoenix_ecto, "~> 2.0", only: :test},
      {:ex_machina, "~> 0.6.1", only: :test},
-     {:brando, path: "../brando", optional: true}]
+
+     {:brando, github: "twined/brando", optional: true}]
   end
 
   # Specifies which paths to compile per environment
