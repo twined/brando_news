@@ -1,4 +1,4 @@
-# Brando News Module
+# Brando News
 
 ## Installation
 
