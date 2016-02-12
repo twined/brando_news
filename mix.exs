@@ -8,6 +8,7 @@ defmodule BrandoNews.Mixfile do
      version: @version,
      compilers: [:gettext, :phoenix] ++ Mix.compilers,
      elixirc_paths: elixirc_paths(Mix.env),
+     test_coverage: [tool: ExCoveralls],
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -30,10 +31,16 @@ defmodule BrandoNews.Mixfile do
     [{:phoenix, "~> 1.1"},
      {:gettext, "~> 0.9.0"},
 
+     {:brando, github: "twined/brando", optional: true},
+
      {:phoenix_ecto, "~> 2.0", only: :test},
      {:ex_machina, "~> 0.6.1", only: :test},
+     {:excoveralls, "~> 0.4", only: :test},
 
-     {:brando, github: "twined/brando", optional: true}]
+     # Documentation dependencies
+     {:ex_doc, "~> 0.11", only: :docs},
+     {:inch_ex, "~> 0.5", only: :docs}
+    ]
   end
 
   # Specifies which paths to compile per environment
