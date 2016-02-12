@@ -1,5 +1,7 @@
 # Brando News
 
+[![Coverage Status](https://coveralls.io/repos/github/twined/brando_news/badge.svg?branch=master)](https://coveralls.io/github/twined/brando_news?branch=master)
+
 ## Installation
 
 Add brando_news to your list of dependencies in `mix.exs`:
