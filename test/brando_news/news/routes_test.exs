@@ -1,4 +1,4 @@
-defmodule Brando.RoutesTest do
+defmodule BrandoNews.RoutesTest do
   use ExUnit.Case
 
   setup do
