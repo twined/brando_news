@@ -123,6 +123,26 @@ defmodule BrandoNews.ControllerTest do
     assert redirected_to(conn, 302) =~ "/admin/news"
   end
 
+  test "update (post) w/erroneus params" do
+    user = Factory.create(:user)
+    post = Factory.create(:post, creator: user)
+
+    post_params =
+      :post_params
+      |> Factory.build(creator: user)
+      |> Map.put("header", "")
+      |> Map.put("data", ~s([{"type":"text","data":{"text":"zcxvxcv","type":"paragraph"}}]))
+
+    conn =
+      :patch
+      |> call("/admin/news/#{post.id}", %{"post" => post_params})
+      |> with_user(user)
+      |> send_request
+
+    assert html_response(conn, 200) =~ "Edit post"
+    assert get_flash(conn, :error) == "Errors in form"
+  end
+
   test "delete_confirm" do
     user = Factory.create(:user)
     post = Factory.create(:post, creator: user)
