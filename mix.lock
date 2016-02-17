@@ -1,5 +1,5 @@
 %{"blacksmith": {:hex, :blacksmith, "0.1.3"},
-  "brando": {:git, "https://github.com/twined/brando.git", "bed0484a5b9e31e02ef955b27ede6b93c488e4fd", []},
+  "brando": {:git, "https://github.com/twined/brando.git", "fffddec0dbc2202db218e3e2b7e578005c11652a", []},
   "certifi": {:hex, :certifi, "0.3.0"},
   "combine": {:hex, :combine, "0.7.0"},
   "comeonin": {:hex, :comeonin, "2.1.0"},
