@@ -17,8 +17,8 @@ defmodule Brando.Post do
 
   import Brando.News.Gettext
 
-  @required_fields ~w(status header data lead creator_id language featured slug)
-  @optional_fields ~w(publish_at tags html)
+  @required_fields ~w(status language featured header slug data creator_id)a
+  @optional_fields ~w(lead publish_at tags html)a
 
   schema "posts" do
     field :language, :string
@@ -63,15 +63,16 @@ defmodule Brando.Post do
       model_changeset = changeset(%__MODULE__{}, :create, params)
 
   """
-  @spec changeset(t, atom, Keyword.t | Options.t | :empty) :: t
-  def changeset(model, action, params \\ :empty)
+  @spec changeset(t, atom, Keyword.t | Options.t | :invalid) :: t
+  def changeset(model, action, params \\ :invalid)
   def changeset(model, :create, params) do
     params =
       params
       |> Tag.split_tags
 
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
     |> generate_html()
   end
 
@@ -89,7 +90,8 @@ defmodule Brando.Post do
     params = params |> Tag.split_tags
 
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, @required_fields ++ @optional_fields)
+    |> validate_required(@required_fields)
     |> generate_html()
     |> cleanup_old_images()
   end

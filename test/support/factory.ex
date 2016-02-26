@@ -32,15 +32,14 @@ defmodule BrandoNews.Factory do
 
   def factory(:post_params) do
     %{
-      language: "en",
-      header: "Post title",
-      lead: "This is the lead",
-      featured: false,
-      slug: "post-title",
-      data: ~s([{"type":"text","data":{"text":"Text in p.","type":"paragraph"}}]),
-      html: ~s(<p>Text in p.</p>),
-      status: :published,
-      creator: build(:user),
+      "language" => "en",
+      "header" => "Post title",
+      "lead" => "This is the lead",
+      "featured" => false,
+      "slug" => "post-title",
+      "data" => ~s([{"type":"text","data":{"text":"Text in p.","type":"paragraph"}}]),
+      "html" => ~s(<p>Text in p.</p>),
+      "status" => :published
     }
   end
 end

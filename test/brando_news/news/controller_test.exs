@@ -77,6 +77,7 @@ defmodule BrandoNews.ControllerTest do
   test "create (post) w/params" do
     user = Factory.create(:user)
     post_params = Factory.build(:post_params, creator: user)
+
     conn =
       :post
       |> call("/admin/news/", %{"post" => post_params})
@@ -90,9 +91,9 @@ defmodule BrandoNews.ControllerTest do
     user = Factory.create(:user)
     post_params =
       :post_params
-      |> Factory.build(creator: user)
-      |> Map.put("data", "")
-      |> Map.put("header", "")
+      |> Factory.build(%{"creator_id" => user.id})
+      |> Map.delete("data")
+      |> Map.delete("header")
 
     conn =
       :post
