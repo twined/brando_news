@@ -41,7 +41,14 @@ defmodule Mix.Tasks.BrandoNews.Install do
       target_path =
         target_path
         |> String.replace("application_name", application_name)
-        |> String.replace("timestamp", timestamp())
+
+      target_path = if String.contains?(target_path, "timestamp") do
+        :timer.sleep(10)
+        String.replace(target_path, "timestamp", timestamp())
+      else
+        target_path
+      end
+      
       target = Path.join(target_dir, target_path)
 
       case format do
