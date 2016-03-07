@@ -14,7 +14,6 @@ config :brando_news, BrandoNews.Integration.TestRepo,
   adapter: Ecto.Adapters.Postgres,
   extensions: [{Postgrex.Extensions.JSON, library: Poison}],
   pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: 1,
   max_overflow: 0
 
 
