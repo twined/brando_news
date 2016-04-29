@@ -59,7 +59,7 @@ defmodule Brando.PostForm do
     end
     field :lead, :textarea, [required: false]
     field :data, :textarea, [required: false]
-    field :publish_at, :text, [default: &Brando.Utils.get_now/0]
+    field :publish_at, :datetime, [default: &Brando.Utils.get_now/0]
     field :tags, :text, [tags: true, required: false]
     submit :save, [class: "btn btn-success"]
   end
