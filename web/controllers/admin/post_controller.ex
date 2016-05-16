@@ -142,9 +142,9 @@ defmodule Brando.Admin.PostController do
   @doc false
   def delete(conn, %{"id" => id}) do
     post = Brando.repo.get(Post, id)
-    post
-    |> Brando.Images.Utils.delete_original_and_sized_images(:cover)
-    |> Brando.repo.delete!
+
+    {:ok, post} = Brando.Images.Utils.delete_original_and_sized_images(post, :cover)
+    Brando.repo.delete!(post)
 
     conn
     |> put_flash(:notice, gettext("Post deleted"))
