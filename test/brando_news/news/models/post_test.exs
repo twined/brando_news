@@ -6,8 +6,8 @@ defmodule BrandoNews.PostTest do
   alias BrandoNews.Factory
 
   setup do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     {:ok, %{user: user, post: post}}
   end

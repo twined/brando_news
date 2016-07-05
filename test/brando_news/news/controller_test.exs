@@ -18,8 +18,8 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "show" do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     conn =
       :get
@@ -31,8 +31,8 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "rerender" do
-    user = Factory.create(:user)
-    Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    Factory.insert(:post, creator: user)
 
     conn =
       :get
@@ -55,8 +55,8 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "edit" do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     conn =
       :get
@@ -75,8 +75,8 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "create (post) w/params" do
-    user = Factory.create(:user)
-    post_params = Factory.build(:post_params, creator: user)
+    user = Factory.insert(:user)
+    post_params = Factory.params_for(:post, creator_id: user.id)
 
     conn =
       :post
@@ -88,13 +88,13 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "create (post) w/erroneus params" do
-    user = Factory.create(:user)
+    user = Factory.insert(:user)
     post_params =
-      :post_params
-      |> Factory.build(%{"creator_id" => user.id})
-      |> Map.delete("data")
-      |> Map.delete("header")
-
+      :post
+      |> Factory.params_for(%{creator_id: user.id})
+      |> Map.delete(:data)
+      |> Map.delete(:header)
+      
     conn =
       :post
       |> call("/admin/news/", %{"post" => post_params})
@@ -107,13 +107,15 @@ defmodule BrandoNews.ControllerTest do
 
 
   test "update (post) w/params" do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     post_params =
-      :post_params
-      |> Factory.build(creator: user)
-      |> Map.put("data", ~s([{"type":"text","data":{"text":"zcxvxcv","type":"paragraph"}}]))
+      Factory.params_for(
+        :post,
+        creator_id: user.id,
+        data: ~s([{"type":"text","data":{"text":"zcxvxcv","type":"paragraph"}}])
+      )
 
     conn =
       :patch
@@ -125,12 +127,12 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "update (post) w/erroneus params" do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     post_params =
-      :post_params
-      |> Factory.build(creator: user)
+      :post
+      |> Factory.params_for(creator: user)
       |> Map.put("header", "")
       |> Map.put("data", ~s([{"type":"text","data":{"text":"zcxvxcv","type":"paragraph"}}]))
 
@@ -145,8 +147,8 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "delete_confirm" do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     conn =
       :get
@@ -158,8 +160,8 @@ defmodule BrandoNews.ControllerTest do
   end
 
   test "delete" do
-    user = Factory.create(:user)
-    post = Factory.create(:post, creator: user)
+    user = Factory.insert(:user)
+    post = Factory.insert(:post, creator: user)
 
     conn =
       :delete
@@ -172,9 +174,7 @@ defmodule BrandoNews.ControllerTest do
 
   test "uses villain" do
     funcs = Brando.Admin.PostController.__info__(:functions)
-    funcs =
-      funcs
-      |> Keyword.keys
+    funcs = Keyword.keys(funcs)
 
     assert :browse_images in funcs
     assert :upload_image in funcs

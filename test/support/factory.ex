@@ -4,7 +4,7 @@ defmodule BrandoNews.Factory do
   alias Brando.User
   alias Brando.Post
 
-  def factory(:user) do
+  def user_factory do
     %User{
       full_name: "James Williamson",
       email: "james@thestooges.com",
@@ -16,7 +16,7 @@ defmodule BrandoNews.Factory do
     }
   end
 
-  def factory(:post) do
+  def post_factory do
     %Post{
       language: "en",
       header: "Post title",
@@ -27,19 +27,6 @@ defmodule BrandoNews.Factory do
       html: ~s(<p>Text in p.</p>),
       status: :published,
       creator: build(:user),
-    }
-  end
-
-  def factory(:post_params) do
-    %{
-      "language" => "en",
-      "header" => "Post title",
-      "lead" => "This is the lead",
-      "featured" => false,
-      "slug" => "post-title",
-      "data" => ~s([{"type":"text","data":{"text":"Text in p.","type":"paragraph"}}]),
-      "html" => ~s(<p>Text in p.</p>),
-      "status" => :published
     }
   end
 end

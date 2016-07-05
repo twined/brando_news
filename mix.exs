@@ -28,17 +28,18 @@ defmodule BrandoNews.Mixfile do
   end
 
   defp deps do
-    [{:phoenix, "~> 1.1"},
+    [{:phoenix, "~> 1.2"},
+     {:phoenix_ecto, "~> 3.0.0"},
      {:gettext, "~> 0.11"},
 
-     {:phoenix_ecto, "~> 3.0.0-rc", only: :test},
-     {:ex_machina, "~> 0.6.1", only: :test},
-     {:excoveralls, "~> 0.4", only: :test},
+     # Test dependencies
+     {:ex_machina, "~> 1.0", only: :test},
+     {:excoveralls, "~> 0.5", only: :test},
 
      {:brando, github: "twined/brando", branch: "develop", optional: true},
 
      # Documentation dependencies
-     {:ex_doc, "~> 0.11", only: :docs},
+     {:ex_doc, "~> 0.12", only: :docs},
      {:inch_ex, "~> 0.5", only: :docs}
     ]
   end
