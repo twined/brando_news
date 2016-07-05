@@ -32,7 +32,6 @@ defmodule Brando.Post do
     field :meta_description, :string
     field :meta_keywords, :string
     field :featured, :boolean
-    field :published, :boolean
     field :publish_at, Ecto.DateTime
     timestamps
     tags
@@ -145,7 +144,6 @@ defmodule Brando.Post do
       creator: gettext("Creator"),
       meta_description: gettext("META description"),
       meta_keywords: gettext("META keywords"),
-      published: gettext("Published"),
       publish_at: gettext("Publish at"),
       tags: gettext("Tags"),
       inserted_at: gettext("Inserted at"),

@@ -17,7 +17,6 @@ defmodule BrandoNews.Integration.TestRepo.Migrations.CreatePosts do
       add :meta_keywords,     :text
       add :css_classes,       :text
       add :featured,          :boolean
-      add :published,         :boolean
       add :publish_at,        :datetime
       tags
       timestamps
