@@ -17,7 +17,7 @@ Add brando_news to your list of dependencies in `mix.exs`:
 
 Install migrations and frontend files:
 
-    $ mix brando.news.install
+    $ mix brando_news.install
 
 Run migrations
 
