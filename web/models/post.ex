@@ -17,8 +17,8 @@ defmodule Brando.Post do
 
   import Brando.News.Gettext
 
-  @required_fields ~w(status language featured header slug data creator_id)a
-  @optional_fields ~w(lead publish_at tags html)a
+  @required_fields ~w(status language featured header slug creator_id)a
+  @optional_fields ~w(lead publish_at tags data html)a
 
   schema "posts" do
     field :language, :string
