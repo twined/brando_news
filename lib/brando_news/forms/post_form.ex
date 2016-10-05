@@ -58,7 +58,10 @@ defmodule Brando.PostForm do
       field :slug, :text, [slug_from: :header]
     end
     field :lead, :textarea, [required: false]
-    field :data, :textarea, [required: false, default: ~s([{"type":"text","data":{"text":"Text","type":"paragraph"}}])]
+    field :data, :textarea, [
+      required: false,
+      default: ~s([{"type":"text","data":{"text":"Text","type":"paragraph"}}])
+    ]
     field :publish_at, :datetime, [default: &Brando.Utils.get_now/0]
     field :tags, :text, [tags: true, required: false]
     submit :save, [class: "btn btn-success"]
