@@ -44,7 +44,7 @@ defmodule Brando.PostForm do
     end
     fieldset do
       field :status, :radio,
-        [default: "2",
+        [default: "1",
          choices: &__MODULE__.get_status_choices/0,
          is_selected: &__MODULE__.status_selected?/2]
     end
