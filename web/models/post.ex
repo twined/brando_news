@@ -147,6 +147,9 @@ defmodule Brando.Post do
       tags: gettext("Tags"),
       inserted_at: gettext("Inserted at"),
       updated_at: gettext("Updated at"),
+    ],
+    help: [
+      featured: gettext("The post is prioritized, taking precedence over pub. date")
     ]
   ]
 end
