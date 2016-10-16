@@ -8,8 +8,6 @@ defmodule Brando.PostForm do
   alias Brando.Post
   import Brando.News.Gettext
 
-  @help_text_featured gettext("The post is prioritized, taking precedence over pub. date")
-
   @doc false
   def get_language_choices() do
     Brando.config(:languages)
@@ -50,8 +48,7 @@ defmodule Brando.PostForm do
     end
     fieldset do
       field :featured, :checkbox,
-        [default: false,
-         help_text: @help_text_featured]
+        [default: false]
     end
     fieldset do
       field :header, :text
