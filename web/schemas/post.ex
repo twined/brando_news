@@ -1,14 +1,14 @@
 defmodule Brando.Post do
   @moduledoc """
-  Ecto schema for the Post model, as well as image field definitions
-  and helper functions for dealing with the post model.
+  Ecto schema for the Post schema, as well as image field definitions
+  and helper functions for dealing with the post schema.
   """
 
   @type t :: %__MODULE__{}
 
-  use Brando.Web, :model
-  use Brando.Tag, :model
-  use Brando.Villain, :model
+  use Brando.Web, :schema
+  use Brando.Tag, :schema
+  use Brando.Villain, :schema
   use Brando.Field.ImageField
 
   alias Brando.Type.Status
@@ -53,43 +53,43 @@ defmodule Brando.Post do
     }
 
   @doc """
-  Casts and validates `params` against `model` to create a valid
+  Casts and validates `params` against `schema` to create a valid
   changeset when action is :create.
 
   ## Example
 
-      model_changeset = changeset(%__MODULE__{}, :create, params)
+      schema_changeset = changeset(%__MODULE__{}, :create, params)
 
   """
   @spec changeset(t, atom, Keyword.t | Options.t) :: t
-  def changeset(model, action, params \\ %{})
-  def changeset(model, :create, params) do
+  def changeset(schema, action, params \\ %{})
+  def changeset(schema, :create, params) do
     params =
       params
       |> Tag.split_tags
 
-    model
+    schema
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> generate_html()
   end
 
   @doc """
-  Casts and validates `params` against `model` to create a valid
+  Casts and validates `params` against `schema` to create a valid
   changeset when action is :update.
 
   ## Example
 
-      model_changeset = changeset(%__MODULE__{}, :update, params)
+      schema_changeset = changeset(%__MODULE__{}, :update, params)
 
   """
   @spec changeset(t, atom, Keyword.t | Options.t) :: t
-  def changeset(model, :update, params) do
+  def changeset(schema, :update, params) do
     params =
       params
       |> Tag.split_tags
 
-    model
+    schema
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> generate_html()
@@ -125,7 +125,7 @@ defmodule Brando.Post do
   #
   # Meta
 
-  use Brando.Meta.Model, [
+  use Brando.Meta.Schema, [
     singular: gettext("post"),
     plural: gettext("posts"),
     repr: &("#{&1.header}"),

@@ -1,6 +1,6 @@
 defmodule Brando.PostForm do
   @moduledoc """
-  A form for the Post model. See the `Brando.Form` module for more
+  A form for the Post schema. See the `Brando.Form` module for more
   documentation
   """
 
@@ -23,14 +23,14 @@ defmodule Brando.PostForm do
 
   @doc """
   Check is status' choice is selected.
-  Translates the `model_value` from an atom to an int as string
+  Translates the `schema_value` from an atom to an int as string
   through `Brando.Type.Status.dump/1`.
   Returns boolean.
   """
   @spec status_selected?(String.t, atom) :: boolean
-  def status_selected?(form_value, model_value) do
+  def status_selected?(form_value, schema_value) do
     # translate value from atom to corresponding int as string
-    {:ok, status_int} = Brando.Type.Status.dump(model_value)
+    {:ok, status_int} = Brando.Type.Status.dump(schema_value)
     form_value == to_string(status_int)
   end
 

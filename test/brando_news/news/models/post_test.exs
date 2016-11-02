@@ -1,6 +1,6 @@
 defmodule BrandoNews.PostTest do
   use ExUnit.Case
-  use BrandoNews.ModelCase
+  use BrandoNews.SchemaCase
 
   alias Brando.Post
   alias BrandoNews.Factory

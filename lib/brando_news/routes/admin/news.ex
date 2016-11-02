@@ -8,7 +8,7 @@ defmodule Brando.News.Routes.Admin do
 
       scope "/admin", as: :admin do
         pipe_through :admin
-        post_routes "/news", model: Brando.Post
+        post_routes "/news", schema: Brando.Post
 
   """
   alias Brando.Admin.PostController
@@ -22,7 +22,7 @@ defmodule Brando.News.Routes.Admin do
     add_post_routes(path, PostController, [])
 
   defp add_post_routes(path, controller, opts) do
-    map = Map.put(%{}, :model, Keyword.get(opts, :model, Post))
+    map = Map.put(%{}, :schema, Keyword.get(opts, :schema, Post))
     options = Keyword.put([], :private, Macro.escape(map))
     quote do
       path         = unquote(path)

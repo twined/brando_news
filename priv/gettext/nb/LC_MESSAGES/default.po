@@ -14,20 +14,19 @@ msgstr "Legg til"
 msgid "Back to index"
 msgstr "Tilbake til oversikten"
 
-#: web/controllers/admin/gallery_controller.ex:64
-#: web/controllers/admin/post_controller.ex:140
+#: web/controllers/admin/post_controller.ex:137
 msgid "Confirm deletion"
 msgstr "Bekreft sletting"
 
-#: web/models/post.ex:137
+#: web/schemas/post.ex:135
 msgid "Cover"
 msgstr "Cover"
 
-#: web/models/gallery.ex:54 web/models/post.ex:143
+#: web/schemas/post.ex:141
 msgid "Creator"
 msgstr "Opprettet av"
 
-#: web/models/post.ex:141
+#: web/schemas/post.ex:139
 msgid "Data"
 msgstr "Data"
 
@@ -44,8 +43,8 @@ msgstr "Sletted"
 msgid "Draft"
 msgstr "Utkast"
 
-#: web/controllers/admin/post_controller.ex:105
-#: web/controllers/admin/post_controller.ex:129
+#: web/controllers/admin/post_controller.ex:102
+#: web/controllers/admin/post_controller.ex:126
 #: web/templates/admin/post/edit.html.eex:1
 #: web/templates/admin/post/index.html.eex:8
 #: web/templates/admin/post/show.html.eex:9
@@ -56,20 +55,20 @@ msgstr "Endre post"
 msgid "Entry not found"
 msgstr "Oppføring fantes ikke"
 
-#: web/controllers/admin/post_controller.ex:91
-#: web/controllers/admin/post_controller.ex:130
+#: web/controllers/admin/post_controller.ex:88
+#: web/controllers/admin/post_controller.ex:127
 msgid "Errors in form"
 msgstr "Feil i skjema"
 
-#: web/models/post.ex:135
+#: web/schemas/post.ex:133
 msgid "Featured"
 msgstr "Fremhevet"
 
-#: web/models/post.ex:142
+#: web/schemas/post.ex:140
 msgid "HTML"
 msgstr "HTML"
 
-#: web/models/post.ex:138
+#: web/schemas/post.ex:136
 msgid "Header"
 msgstr "Overskrift"
 
@@ -77,34 +76,34 @@ msgstr "Overskrift"
 msgid "Index"
 msgstr "Oversikt"
 
-#: web/controllers/admin/post_controller.ex:33
+#: web/controllers/admin/post_controller.ex:30
 #: web/templates/admin/post/index.html.eex:1
 msgid "Index - posts"
 msgstr "Postoversikt"
 
-#: web/models/gallery.ex:57 web/models/post.ex:148
+#: web/schemas/post.ex:147
 msgid "Inserted at"
 msgstr "Opprettet"
 
-#: web/models/post.ex:136
+#: web/schemas/post.ex:134
 msgid "Language"
 msgstr "Språk"
 
-#: web/models/post.ex:140
+#: web/schemas/post.ex:138
 msgid "Lead"
 msgstr "Ingress"
 
-#: web/models/post.ex:144
+#: web/schemas/post.ex:142
 msgid "META description"
 msgstr "META beskrivelse"
 
-#: web/models/post.ex:145
+#: web/schemas/post.ex:143
 msgid "META keywords"
 msgstr "META nøkkelord"
 
-#: web/controllers/admin/post_controller.ex:70
-#: web/controllers/admin/post_controller.ex:88
-#: web/templates/admin/post/index.html.eex:21
+#: web/controllers/admin/post_controller.ex:67
+#: web/controllers/admin/post_controller.ex:85
+#: web/templates/admin/post/index.html.eex:18
 #: web/templates/admin/post/new.html.eex:1
 msgid "New post"
 msgstr "Ny post"
@@ -113,7 +112,7 @@ msgstr "Ny post"
 msgid "News"
 msgstr "Nyheter"
 
-#: web/templates/admin/post/index.html.eex:17
+#: web/templates/admin/post/index.html.eex:14
 msgid "No posts"
 msgstr "Ingen poster"
 
@@ -121,135 +120,72 @@ msgstr "Ingen poster"
 msgid "Pending"
 msgstr "Venter"
 
-#: web/controllers/admin/post_controller.ex:84
+#: web/controllers/admin/post_controller.ex:81
 msgid "Post created"
 msgstr "Post opprettet"
 
-#: web/controllers/admin/post_controller.ex:153
+#: web/controllers/admin/post_controller.ex:150
 msgid "Post deleted"
 msgstr "Post slettet"
 
-#: web/controllers/admin/post_controller.ex:121
+#: web/controllers/admin/post_controller.ex:118
 msgid "Post updated"
 msgstr "Post oppdatert"
 
-#: web/controllers/admin/post_controller.ex:47
+#: web/controllers/admin/post_controller.ex:44
 msgid "Posts re-rendered"
 msgstr "Poster gjenskapt"
 
-#: web/models/post.ex:146
+#: web/schemas/post.ex:145
 msgid "Publish at"
 msgstr "Publiseringstidspunkt"
 
-#: lib/brando_news/forms/post_form.ex:19
+#: lib/brando_news/forms/post_form.ex:19 web/schemas/post.ex:144
 msgid "Published"
 msgstr "Publisert"
 
-#: web/templates/admin/post/index.html.eex:31
+#: web/templates/admin/post/index.html.eex:28
 msgid "Re-render posts"
 msgstr "Gjenskap poster"
 
-#: web/controllers/admin/post_controller.ex:59
+#: web/controllers/admin/post_controller.ex:56
 #: web/templates/admin/post/index.html.eex:7
 #: web/templates/admin/post/show.html.eex:2
 msgid "Show post"
 msgstr "Vis post"
 
-#: web/models/post.ex:139
+#: web/schemas/post.ex:137
 msgid "Slug"
 msgstr "URL-tamp"
 
-#: web/models/post.ex:134
+#: web/schemas/post.ex:132
 msgid "Status"
 msgstr "Status"
 
-#: web/models/post.ex:147
+#: web/schemas/post.ex:146
 msgid "Tags"
 msgstr "Emneknagger"
 
-#: web/models/post.ex:152
+#: lib/brando_news/forms/post_form.ex:52
 msgid "The post is prioritized, taking precedence over pub. date"
 msgstr "Posten prioriteres over publiseringsdato"
 
-#: web/templates/admin/gallery/delete_confirm.html.eex:11
 #: web/templates/admin/post/delete_confirm.html.eex:11
 msgid "This object cannot be restored!"
 msgstr "Dette objektet kan ikke gjenopprettes!"
 
-#: web/models/gallery.ex:58 web/models/post.ex:149
+#: web/schemas/post.ex:148
 msgid "Updated at"
 msgstr "Oppdatert"
 
-#: web/templates/admin/gallery/delete_confirm.html.eex:6
 #: web/templates/admin/post/delete_confirm.html.eex:6
 msgid "You are about to delete this object. Please check carefully, and note that any dependent objects will also be removed."
 msgstr "Du er i ferd med å slette dette objektet. Alle underordnede objekter slettes også."
 
-#: web/models/post.ex:129
+#: web/schemas/post.ex:127
 msgid "post"
 msgstr "post"
 
-#: web/models/post.ex:130
+#: web/schemas/post.ex:128
 msgid "posts"
 msgstr "poster"
-
-#: web/templates/admin/gallery/new.html.eex:4
-msgid "Create image series"
-msgstr "Opprett bildeserie"
-
-#: web/templates/admin/gallery/delete_confirm.html.eex:3
-#: web/templates/admin/gallery/show.html.eex:28
-msgid "Delete gallery"
-msgstr "Slett galleri"
-
-#: web/templates/admin/gallery/show.html.eex:27
-msgid "Edit gallery"
-msgstr "Endre galleri"
-
-#: web/templates/admin/post/index.html.eex:13
-msgid "Gallery"
-msgstr "Galleri"
-
-#: web/controllers/admin/gallery_controller.ex:75
-msgid "Gallery deleted"
-msgstr "Galleri slettet"
-
-#: web/templates/admin/gallery/show.html.eex:1
-msgid "Gallery details"
-msgstr "Galleridetaljer"
-
-#: web/models/gallery.ex:56
-msgid "Image series"
-msgstr "Bildeserie"
-
-#: web/controllers/admin/gallery_controller.ex:38
-msgid "New gallery"
-msgstr "Nytt galleri"
-
-#: web/templates/admin/gallery/new.html.eex:1
-msgid "New gallery for"
-msgstr "Nytt galleri for"
-
-#: web/templates/admin/gallery/show.html.eex:23
-msgid "No images"
-msgstr "Ingen bilder"
-
-#: web/models/post.ex:153
-msgid "Photo attached to the news post, if your frontend supports it."
-msgstr "Coverbilde tilknyttet nyhetsposten, hvis nettsiden din støtter dette."
-
-#: web/models/gallery.ex:55
-msgid "Post"
-msgstr "Post"
-
-#: web/controllers/admin/gallery_controller.ex:23
-msgid "Show gallery"
-msgstr "Vis galleri"
-
-#: web/models/gallery.ex:50
-msgid "attached galleries"
-msgstr "tilknyttede gallerier"
-
-#: web/models/gallery.ex:49
-msgid "attached gallery"
-msgstr "tilknyttet galleri"
