@@ -1,0 +1,5 @@
+    <h1><%= gettext("New gallery for") %> <%= @post.header %></h1>
+    <div>
+      <button class="btn btn-default create-series"
+              data-category-id="<%= @category_id %>"><%= gettext("Create image series") %></button>
+    </div>

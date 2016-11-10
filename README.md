@@ -58,3 +58,24 @@ Add to your `lib/my_app.ex`:
 
 +     Brando.Registry.register(Brando.News)
 ```
+
+# Post gallery
+
+If you want to add functionality to attach a gallery to a news post, you first have to install it:
+
+  * `$ mix brando_news.gallery.install`
+  * `$ mix ecto.migrate`
+  * Add to your otp_app's `conf/brando.exs`:
+    ```elixir
+    config :brando, Brando.News,
+      enable_galleries: true
+    ```
+  * Add this popup form to your otp_app's start up:
+    ```elixir
+    Brando.PopupForm.Registry.register(:gallery, "imageseries", Brando.ImageSeriesForm,
+                                       gettext("Create gallery"), [:id, :slug])
+    ```
+  * Add to `web/static/js/admin/custom.js`:
+    ```javascript
+    import News from './news';
+    ```

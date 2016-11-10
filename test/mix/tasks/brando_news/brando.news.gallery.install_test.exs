@@ -1,11 +1,12 @@
 Code.require_file "../../../support/mix_helper.exs", __DIR__
 
-defmodule Mix.Tasks.BrandoNews.InstallTest do
+defmodule Mix.Tasks.BrandoNews.Gallery.InstallTest do
   use ExUnit.Case, async: true
-
+  use BrandoNews.ConnCase
   import MixHelper
+  alias BrandoNews.Factory
 
-  @app_name  "photo_blog"
+  @app_name  "photo_blog_extra"
   @tmp_path  tmp_path()
   @project_path Path.join(@tmp_path, @app_name)
 
@@ -31,9 +32,10 @@ defmodule Mix.Tasks.BrandoNews.InstallTest do
     File.cd! @project_path
   end
 
-  test "brando.news.install" do
-    Mix.Tasks.BrandoNews.Install.run([])
-    assert_received {:mix_shell, :info, ["\nBrando News finished installing."]}
+  test "brando.news.gallery.install" do
+    _ = Factory.insert(:user)
+    Mix.Tasks.BrandoNews.Gallery.Install.run(["-r", "BrandoNews.Integration.TestRepo"])
+    assert_received {:mix_shell, :info, ["\nBrando News Gallery finished installing."]}
     assert [migration_file] =
       Path.wildcard("priv/repo/migrations/*_create_posts.exs")
 
@@ -41,6 +43,13 @@ defmodule Mix.Tasks.BrandoNews.InstallTest do
       assert file =~ "defmodule BrandoNews.Repo.Migrations.CreatePosts"
       assert file =~ "use Brando.Villain, :migration"
       assert file =~ "villain"
+    end
+
+    assert [js_file] =
+      Path.wildcard("web/static/js/admin/news.js")
+
+    assert_file js_file, fn file ->
+      assert file =~ "class News {"
     end
   end
 end

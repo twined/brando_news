@@ -1,0 +1,29 @@
+<h1><%= gettext("Gallery details") %></h1>
+<div class="image-serie image-selection-pool clearfix">
+  <h2 class="m-b-sm">
+    <span class="text-muted">
+      <%= String.capitalize(@gallery.imageseries.name) %>:
+    </span>
+  </h2>
+  <%= if @gallery.imageseries.images != [] do %>
+    <%= for image <- @gallery.imageseries.images do %>
+    <div class="image-wrapper">
+      <img data-title="<%= image.image.title %>"
+           data-credits="<%= image.image.credits %>"
+           data-id="<%= image.id %>"
+           src="<%= img_url(image.image, :thumb, prefix: media_url()) %>" />
+      <div class="overlay">
+        <a href="" class="edit-properties">
+          <i class="fa fa-fw fa-info"></i>
+        </a>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <p><%= gettext("No images") %></p>
+  <% end %>
+</div>
+<div>
+  <a class="btn btn-default" href="<%= Brando.helpers.admin_image_series_path(@conn, :upload, @gallery.imageseries_id) %>"><%= gettext("Edit gallery") %></a>
+  <a class="btn btn-default" href="<%= Brando.helpers.admin_gallery_path(@conn, :delete_confirm, @gallery.id) %>"><%= gettext("Delete gallery") %></a>
+</div>

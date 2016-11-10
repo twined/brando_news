@@ -32,6 +32,28 @@ config :brando, Brando.Menu, [
 config :brando, Brando.Villain, parser: Brando.Villain.Parser.Default
 config :brando, Brando.Villain, extra_blocks: []
 
+config :brando, Brando.Images, [
+  default_config: %{
+    allowed_mimetypes: ["image/jpeg", "image/png"],
+    default_size: :medium, size_limit: 10240000,
+    upload_path: Path.join("images", "default"),
+    sizes: %{
+      "small" =>  %{"size" => "300", "quality" => 100},
+      "medium" => %{"size" => "500", "quality" => 100},
+      "large" =>  %{"size" => "700", "quality" => 100},
+      "xlarge" => %{"size" => "900", "quality" => 100},
+      "thumb" =>  %{"size" => "150x150", "quality" => 100, "crop" => true},
+      "micro" =>  %{"size" => "25x25", "quality" => 100, "crop" => true}
+    }
+  },
+  optimize: [
+    png: [
+      bin: "cp",
+      args: "%{filename} %{new_filename}"
+    ]
+  ]
+]
+
 config :brando, :default_language, "nb"
 config :brando, :admin_default_language, "nb"
 config :brando, :languages, [
