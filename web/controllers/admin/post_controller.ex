@@ -16,6 +16,8 @@ defmodule Brando.Admin.PostController do
   alias Brando.Post
 
   plug :put_section, "news"
+  plug :check_for_uploads,
+     {"post", Brando.Post} when action in [:create, :update]
   plug :scrub_params, "post" when action in [:create, :update]
 
   @doc false

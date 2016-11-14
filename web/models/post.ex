@@ -17,7 +17,7 @@ defmodule Brando.Post do
   import Brando.News.Gettext
 
   @required_fields ~w(status language featured header slug creator_id)a
-  @optional_fields ~w(lead publish_at tags data html)a
+  @optional_fields ~w(lead publish_at tags data cover html)a
 
   schema "posts" do
     field :language, :string
@@ -44,9 +44,9 @@ defmodule Brando.Post do
       size_limit: 10240000,
       sizes: %{
         "small" =>  %{"size" => "300", "quality" => 100},
-        "medium" => %{"size" => "500", "quality" => 100},
-        "large" =>  %{"size" => "700", "quality" => 100},
-        "xlarge" => %{"size" => "900", "quality" => 100},
+        "medium" => %{"size" => "700", "quality" => 100},
+        "large" =>  %{"size" => "900", "quality" => 100},
+        "xlarge" => %{"size" => "1400", "quality" => 100},
         "thumb" =>  %{"size" => "150x150", "quality" => 100, "crop" => true},
         "micro" =>  %{"size" => "25x25", "quality" => 100, "crop" => true}
       }
@@ -149,7 +149,8 @@ defmodule Brando.Post do
       updated_at: gettext("Updated at"),
     ],
     help: [
-      featured: gettext("The post is prioritized, taking precedence over pub. date")
+      featured: gettext("The post is prioritized, taking precedence over pub. date"),
+      cover: gettext("Photo attached to the news post, if your frontend supports it.")
     ]
   ]
 end

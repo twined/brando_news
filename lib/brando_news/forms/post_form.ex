@@ -60,6 +60,7 @@ defmodule Brando.PostForm do
       default: ~s([{"type":"text","data":{"text":"Text","type":"paragraph"}}])
     ]
     field :publish_at, :datetime, [default: &Brando.Utils.get_now/0]
+    field :cover, :file, [required: false]
     field :tags, :text, [tags: true, required: false]
     submit :save, [class: "btn btn-success"]
   end
