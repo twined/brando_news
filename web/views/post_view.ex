@@ -28,7 +28,7 @@ defmodule Brando.Admin.PostView do
   end
 
   def enabled_galleries? do
-    news_config() && Keyword.get(news_config(), :enable_galleries, nil) || nil
+    news_config() && Keyword.get(news_config(), :enable_galleries, false) || false
   end
 
   defp news_config() do
