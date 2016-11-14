@@ -12,6 +12,7 @@ defmodule Brando.Admin.PostController do
   import Brando.Utils, only: [helpers: 1]
   import Brando.Utils.Model, only: [put_creator: 2]
   import Brando.Plug.HTML
+  import Brando.Plug.Uploads
 
   alias Brando.Post
 
