@@ -11,19 +11,20 @@ msgstr ""
 msgid "Back to index"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:137
+#: web/controllers/admin/gallery_controller.ex:64
+#: web/controllers/admin/post_controller.ex:140
 msgid "Confirm deletion"
 msgstr ""
 
-#: web/models/post.ex:135
+#: web/models/post.ex:137
 msgid "Cover"
 msgstr ""
 
-#: web/models/post.ex:141
+#: web/models/gallery.ex:54 web/models/post.ex:143
 msgid "Creator"
 msgstr ""
 
-#: web/models/post.ex:139
+#: web/models/post.ex:141
 msgid "Data"
 msgstr ""
 
@@ -40,8 +41,8 @@ msgstr ""
 msgid "Draft"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:102
-#: web/controllers/admin/post_controller.ex:126
+#: web/controllers/admin/post_controller.ex:105
+#: web/controllers/admin/post_controller.ex:129
 #: web/templates/admin/post/edit.html.eex:1
 #: web/templates/admin/post/index.html.eex:8
 #: web/templates/admin/post/show.html.eex:9
@@ -52,20 +53,20 @@ msgstr ""
 msgid "Entry not found"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:88
-#: web/controllers/admin/post_controller.ex:127
+#: web/controllers/admin/post_controller.ex:91
+#: web/controllers/admin/post_controller.ex:130
 msgid "Errors in form"
 msgstr ""
 
-#: web/models/post.ex:133
+#: web/models/post.ex:135
 msgid "Featured"
 msgstr ""
 
-#: web/models/post.ex:140
+#: web/models/post.ex:142
 msgid "HTML"
 msgstr ""
 
-#: web/models/post.ex:136
+#: web/models/post.ex:138
 msgid "Header"
 msgstr ""
 
@@ -73,34 +74,34 @@ msgstr ""
 msgid "Index"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:30
+#: web/controllers/admin/post_controller.ex:33
 #: web/templates/admin/post/index.html.eex:1
 msgid "Index - posts"
 msgstr ""
 
-#: web/models/post.ex:147
+#: web/models/gallery.ex:57 web/models/post.ex:148
 msgid "Inserted at"
 msgstr ""
 
-#: web/models/post.ex:134
+#: web/models/post.ex:136
 msgid "Language"
 msgstr ""
 
-#: web/models/post.ex:138
+#: web/models/post.ex:140
 msgid "Lead"
 msgstr ""
 
-#: web/models/post.ex:142
+#: web/models/post.ex:144
 msgid "META description"
 msgstr ""
 
-#: web/models/post.ex:143
+#: web/models/post.ex:145
 msgid "META keywords"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:67
-#: web/controllers/admin/post_controller.ex:85
-#: web/templates/admin/post/index.html.eex:18
+#: web/controllers/admin/post_controller.ex:70
+#: web/controllers/admin/post_controller.ex:88
+#: web/templates/admin/post/index.html.eex:21
 #: web/templates/admin/post/new.html.eex:1
 msgid "New post"
 msgstr ""
@@ -109,7 +110,7 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: web/templates/admin/post/index.html.eex:14
+#: web/templates/admin/post/index.html.eex:17
 msgid "No posts"
 msgstr ""
 
@@ -117,72 +118,135 @@ msgstr ""
 msgid "Pending"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:81
+#: web/controllers/admin/post_controller.ex:84
 msgid "Post created"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:150
+#: web/controllers/admin/post_controller.ex:153
 msgid "Post deleted"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:118
+#: web/controllers/admin/post_controller.ex:121
 msgid "Post updated"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:44
+#: web/controllers/admin/post_controller.ex:47
 msgid "Posts re-rendered"
 msgstr ""
 
-#: web/models/post.ex:145
+#: web/models/post.ex:146
 msgid "Publish at"
 msgstr ""
 
-#: lib/brando_news/forms/post_form.ex:19 web/models/post.ex:144
+#: lib/brando_news/forms/post_form.ex:19
 msgid "Published"
 msgstr ""
 
-#: web/templates/admin/post/index.html.eex:28
+#: web/templates/admin/post/index.html.eex:31
 msgid "Re-render posts"
 msgstr ""
 
-#: web/controllers/admin/post_controller.ex:56
+#: web/controllers/admin/post_controller.ex:59
 #: web/templates/admin/post/index.html.eex:7
 #: web/templates/admin/post/show.html.eex:2
 msgid "Show post"
 msgstr ""
 
-#: web/models/post.ex:137
+#: web/models/post.ex:139
 msgid "Slug"
 msgstr ""
 
-#: web/models/post.ex:132
+#: web/models/post.ex:134
 msgid "Status"
 msgstr ""
 
-#: web/models/post.ex:146
+#: web/models/post.ex:147
 msgid "Tags"
 msgstr ""
 
-#: lib/brando_news/forms/post_form.ex:52
+#: web/models/post.ex:152
 msgid "The post is prioritized, taking precedence over pub. date"
 msgstr ""
 
+#: web/templates/admin/gallery/delete_confirm.html.eex:11
 #: web/templates/admin/post/delete_confirm.html.eex:11
 msgid "This object cannot be restored!"
 msgstr ""
 
-#: web/models/post.ex:148
+#: web/models/gallery.ex:58 web/models/post.ex:149
 msgid "Updated at"
 msgstr ""
 
+#: web/templates/admin/gallery/delete_confirm.html.eex:6
 #: web/templates/admin/post/delete_confirm.html.eex:6
 msgid "You are about to delete this object. Please check carefully, and note that any dependent objects will also be removed."
 msgstr ""
 
-#: web/models/post.ex:127
+#: web/models/post.ex:129
 msgid "post"
 msgstr ""
 
-#: web/models/post.ex:128
+#: web/models/post.ex:130
 msgid "posts"
+msgstr ""
+
+#: web/templates/admin/gallery/new.html.eex:4
+msgid "Create image series"
+msgstr ""
+
+#: web/templates/admin/gallery/delete_confirm.html.eex:3
+#: web/templates/admin/gallery/show.html.eex:28
+msgid "Delete gallery"
+msgstr ""
+
+#: web/templates/admin/gallery/show.html.eex:27
+msgid "Edit gallery"
+msgstr ""
+
+#: web/templates/admin/post/index.html.eex:13
+msgid "Gallery"
+msgstr ""
+
+#: web/controllers/admin/gallery_controller.ex:75
+msgid "Gallery deleted"
+msgstr ""
+
+#: web/templates/admin/gallery/show.html.eex:1
+msgid "Gallery details"
+msgstr ""
+
+#: web/models/gallery.ex:56
+msgid "Image series"
+msgstr ""
+
+#: web/controllers/admin/gallery_controller.ex:38
+msgid "New gallery"
+msgstr ""
+
+#: web/templates/admin/gallery/new.html.eex:1
+msgid "New gallery for"
+msgstr ""
+
+#: web/templates/admin/gallery/show.html.eex:23
+msgid "No images"
+msgstr ""
+
+#: web/models/post.ex:153
+msgid "Photo attached to the news post, if your frontend supports it."
+msgstr ""
+
+#: web/models/gallery.ex:55
+msgid "Post"
+msgstr ""
+
+#: web/controllers/admin/gallery_controller.ex:23
+msgid "Show gallery"
+msgstr ""
+
+#: web/models/gallery.ex:50
+msgid "attached galleries"
+msgstr ""
+
+#: web/models/gallery.ex:49
+msgid "attached gallery"
 msgstr ""
