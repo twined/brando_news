@@ -4,9 +4,7 @@ defmodule Brando.Admin.PostController do
   """
 
   use Brando.Web, :controller
-  use Brando.Villain, [:controller, [
-    image_schema: Brando.Image,
-    series_schema: Brando.ImageSeries]]
+  use Brando.Villain, :controller
 
   import Brando.News.Gettext
   import Brando.Utils, only: [helpers: 1]
