@@ -1,12 +1,12 @@
 defmodule Brando.Gallery do
   @moduledoc """
-  Ecto schema for the Gallery model.
+  Ecto schema for the Gallery schema.
   This schema connects a post and an image series
   """
 
   @type t :: %__MODULE__{}
 
-  use Brando.Web, :model
+  use Brando.Web, :schema
 
   import Brando.News.Gettext
 
@@ -20,17 +20,17 @@ defmodule Brando.Gallery do
   end
 
   @doc """
-  Casts and validates `params` against `model` to create a valid
+  Casts and validates `params` against `schema` to create a valid
   changeset when action is :create.
 
   ## Example
 
-      model_changeset = changeset(%__MODULE__{}, :create, params)
+      schema_changeset = changeset(%__MODULE__{}, :create, params)
 
   """
   @spec changeset(t, Keyword.t | Options.t) :: t
-  def changeset(model, params \\ %{}) do
-    model
+  def changeset(schema, params \\ %{}) do
+    schema
     |> cast(params, @required_fields)
     |> validate_required(@required_fields)
   end
@@ -45,7 +45,7 @@ defmodule Brando.Gallery do
   #
   # Meta
 
-  use Brando.Meta.Model, [
+  use Brando.Meta.Schema, [
     singular: gettext("attached gallery"),
     plural: gettext("attached galleries"),
     repr: &("#{&1.id}"),

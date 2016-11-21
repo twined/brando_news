@@ -10,13 +10,10 @@ defmodule Brando.Admin.PostController do
   import Brando.Utils, only: [helpers: 1]
   import Brando.Utils.Schema, only: [put_creator: 2]
   import Brando.Plug.HTML
-  import Brando.Plug.Uploads
 
   alias Brando.Post
 
   plug :put_section, "news"
-  plug :check_for_uploads,
-     {"post", Brando.Post} when action in [:create, :update]
   plug :scrub_params, "post" when action in [:create, :update]
 
   @doc false

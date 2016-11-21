@@ -2,11 +2,11 @@ defmodule Brando.Admin.GalleryController do
   @moduledoc """
   Controller for the Brando Gallery module.
   """
-  use    Brando.Web, :controller
+  use Brando.Web, :controller
   import Brando.News.Gettext
-  import Brando.Utils.Model, only: [put_creator: 2]
+  import Brando.Utils.Schema, only: [put_creator: 2]
   import Brando.Plug.HTML
-  alias  Brando.{Gallery, Post, ImageSeries}
+  alias Brando.{Gallery, Post, ImageSeries}
 
   plug :put_section, "gallery"
   plug :scrub_params, "gallery" when action in [:create, :update]

@@ -71,6 +71,7 @@ defmodule Brando.Post do
     schema
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+    |> validate_upload({:image, :cover})
     |> generate_html()
   end
 
@@ -92,6 +93,7 @@ defmodule Brando.Post do
     schema
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+    |> validate_upload({:image, :cover})
     |> generate_html()
     |> cleanup_old_images()
   end
