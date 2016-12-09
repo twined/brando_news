@@ -13,8 +13,8 @@ defmodule Mix.Tasks.BrandoNews.Gallery.Install do
     # Migration files
     {:eex,  "templates/brando.news.gallery.install/priv/repo/migrations/posts_imageseries_migration.exs",
             "priv/repo/migrations/timestamp_create_posts_imageseries.exs"},
-    {:copy, "templates/brando.news.gallery.install/web/static/js/admin/news.js",
-            "web/static/js/admin/news.js"},
+    {:copy, "templates/brando.news.gallery.install/assets/js/admin/news.js",
+            "assets/js/admin/news.js"},
   ]
 
   @static []
