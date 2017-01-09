@@ -79,3 +79,13 @@ If you want to add functionality to attach a gallery to a news post, you first h
     ```javascript
     import News from './news';
     ```
+
+# Limited Villain blocks
+
+If you want to limit the available Villain blocks in the editor, you can pass `villain_blocks` to the config:
+
+```elixir
+
+config :brando, Brando.News,
+  villain_blocks: ["Markdown"]
+```

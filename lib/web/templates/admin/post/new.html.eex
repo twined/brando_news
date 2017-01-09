@@ -3,4 +3,5 @@
     <%= Brando.Villain.HTML.initialize(
           base_url:     "/admin/news/",
           image_series: "post",
+          default_blocks: Brando.News.config(:villain_blocks) || [],
           source:       "textarea[name=\"post[data]\"]") %>
