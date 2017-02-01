@@ -28,8 +28,8 @@ defmodule BrandoNews.Mixfile do
   end
 
   defp deps do
-    [{:phoenix, "~> 1.2"},
-     {:phoenix_ecto, "~> 3.0.0"},
+    [{:phoenix, github: "phoenixframework/phoenix", override: true},
+     {:phoenix_ecto, "~> 3.2"},
      {:gettext, "~> 0.11"},
 
      # Test dependencies
