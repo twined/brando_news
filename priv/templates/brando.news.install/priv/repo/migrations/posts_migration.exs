@@ -9,7 +9,7 @@ defmodule <%= application_module %>.Repo.Migrations.CreatePosts do
       add :header,            :text
       add :slug,              :text
       add :lead,              :text
-      villain
+      villain()
       add :cover,             :text
       add :status,            :integer
       add :creator_id,        references(:users)
@@ -18,8 +18,8 @@ defmodule <%= application_module %>.Repo.Migrations.CreatePosts do
       add :css_classes,       :text
       add :featured,          :boolean
       add :publish_at,        :datetime
-      tags
-      timestamps
+      tags()
+      timestamps()
     end
     create index(:posts, [:language])
     create index(:posts, [:slug])
