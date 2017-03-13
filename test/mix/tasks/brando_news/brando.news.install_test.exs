@@ -1,7 +1,7 @@
 Code.require_file "../../../support/mix_helper.exs", __DIR__
 
 defmodule Mix.Tasks.BrandoNews.InstallTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
 
   import MixHelper
 
@@ -18,7 +18,7 @@ defmodule Mix.Tasks.BrandoNews.InstallTest do
     File.rm_rf @project_path
 
     # Create path for app
-    File.mkdir_p Path.join(@project_path, "web")
+    File.mkdir_p Path.join([@project_path, "lib", "web", "templates"])
 
     # Create path for templates
     File.mkdir_p templates_path

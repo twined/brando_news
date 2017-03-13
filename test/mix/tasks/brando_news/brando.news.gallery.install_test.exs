@@ -1,7 +1,7 @@
 Code.require_file "../../../support/mix_helper.exs", __DIR__
 
 defmodule Mix.Tasks.BrandoNews.Gallery.InstallTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
   use BrandoNews.ConnCase
   import MixHelper
   alias BrandoNews.Factory
@@ -37,12 +37,10 @@ defmodule Mix.Tasks.BrandoNews.Gallery.InstallTest do
     Mix.Tasks.BrandoNews.Gallery.Install.run(["-r", "BrandoNews.Integration.TestRepo"])
     assert_received {:mix_shell, :info, ["\nBrando News Gallery finished installing."]}
     assert [migration_file] =
-      Path.wildcard("priv/repo/migrations/*_create_posts.exs")
+      Path.wildcard("priv/repo/migrations/*_create_posts_imageseries.exs")
 
     assert_file migration_file, fn file ->
-      assert file =~ "defmodule BrandoNews.Repo.Migrations.CreatePosts"
-      assert file =~ "use Brando.Villain, :migration"
-      assert file =~ "villain"
+      assert file =~ "defmodule BrandoNews.Repo.Migrations.CreateGalleryPosts"
     end
 
     assert [js_file] =
