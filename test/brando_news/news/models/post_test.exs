@@ -2,7 +2,7 @@ defmodule BrandoNews.PostTest do
   use ExUnit.Case
   use BrandoNews.SchemaCase
 
-  alias Brando.Post
+  alias Brando.News.Post
   alias BrandoNews.Factory
 
   setup do

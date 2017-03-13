@@ -10,7 +10,7 @@
     ],
     check_or_x: [:cover], filter: true,
     smart_fields:
-      enabled_galleries? && [{gettext("Gallery"), Brando.Admin.PostView, :attached_gallery}],
+      enabled_galleries?() && [{gettext("Gallery"), Brando.Admin.PostView, :attached_gallery}],
     hide: [:tags, :lead, :slug, :data, :html, :meta_description,
            :meta_keywords, :inserted_at, :publish_at]) %>
 <% else %>

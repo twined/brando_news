@@ -12,7 +12,6 @@ config :logger, level: :warn
 config :brando_news, BrandoNews.Integration.TestRepo,
   url: "ecto://postgres:postgres@localhost/brando_news_test",
   adapter: Ecto.Adapters.Postgres,
-  extensions: [{Postgrex.Extensions.JSON, library: Poison}],
   pool: Ecto.Adapters.SQL.Sandbox,
   max_overflow: 0
 
@@ -64,3 +63,13 @@ config :brando, :admin_languages, [
   [value: "nb", text: "Norsk"],
   [value: "en", text: "English"]
 ]
+
+# Configure Guardian for auth.
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "BrandoTesting",
+  ttl: {30, :days},
+  verify_issuer: true, # optional
+  secret_key: "XX9ND0BmT51mrKWp46WdYZoPWOv6awnEScbNg3HPWTnnl605tmDKEogZCb9109gb",
+  serializer: Brando.GuardianSerializer

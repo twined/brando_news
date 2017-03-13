@@ -47,7 +47,7 @@ defmodule Brando.Admin.GalleryController do
       %Gallery{}
       |> put_creator(Brando.Utils.current_user(conn))
       |> Gallery.changeset(gallery)
-      |> Brando.repo.insert
+      |> Brando.repo.insert()
 
     conn
     |> render(:create, changeset: changeset)

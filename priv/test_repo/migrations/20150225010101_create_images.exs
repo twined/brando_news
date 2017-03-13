@@ -8,7 +8,7 @@ defmodule BrandoNews.Integration.TestRepo.Migrations.CreateImages do
       add :slug,              :text
       add :cfg,               :json
       add :creator_id,        references(:users)
-      timestamps
+      timestamps()
     end
     create index(:imagecategories, [:slug])
 
@@ -19,8 +19,8 @@ defmodule BrandoNews.Integration.TestRepo.Migrations.CreateImages do
       add :cfg,               :json
       add :creator_id,        references(:users)
       add :image_category_id, references(:imagecategories)
-      sequenced
-      timestamps
+      sequenced()
+      timestamps()
     end
     create unique_index(:imageseries, [:slug])
 
@@ -28,8 +28,8 @@ defmodule BrandoNews.Integration.TestRepo.Migrations.CreateImages do
       add :image,             :text
       add :creator_id,        references(:users)
       add :image_series_id,   references(:imageseries)
-      sequenced
-      timestamps
+      sequenced()
+      timestamps()
     end
   end
 

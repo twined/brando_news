@@ -2,7 +2,7 @@ defmodule BrandoNews.Factory do
   use ExMachina.Ecto, repo: Brando.repo
 
   alias Brando.User
-  alias Brando.Post
+  alias Brando.News.Post
 
   def user_factory do
     %User{

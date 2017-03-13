@@ -4,12 +4,12 @@ defmodule BrandoNews.Integration.TestRepo.Migrations.CreatePosts do
   use Brando.Villain, :migration
 
   def up do
-    create table(:posts) do
+    create table(:news_posts) do
       add :language,          :text
       add :header,            :text
       add :slug,              :text
       add :lead,              :text
-      villain
+      villain()
       add :cover,             :text
       add :status,            :integer
       add :creator_id,        references(:users)
@@ -17,20 +17,20 @@ defmodule BrandoNews.Integration.TestRepo.Migrations.CreatePosts do
       add :meta_keywords,     :text
       add :css_classes,       :text
       add :featured,          :boolean
-      add :publish_at,        :datetime
-      tags
-      timestamps
+      add :publish_at,        :naive_datetime
+      tags()
+      timestamps()
     end
-    create index(:posts, [:language])
-    create index(:posts, [:slug])
-    create index(:posts, [:status])
-    create index(:posts, [:tags])
+    create index(:news_posts, [:language])
+    create index(:news_posts, [:slug])
+    create index(:news_posts, [:status])
+    create index(:news_posts, [:tags])
   end
 
   def down do
-    drop table(:posts)
-    drop index(:posts, [:language])
-    drop index(:posts, [:slug])
-    drop index(:posts, [:status])
+    drop table(:news_posts)
+    drop index(:news_posts, [:language])
+    drop index(:news_posts, [:slug])
+    drop index(:news_posts, [:status])
   end
 end

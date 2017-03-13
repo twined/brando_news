@@ -8,11 +8,11 @@ defmodule Brando.News.Routes.Admin do
 
       scope "/admin", as: :admin do
         pipe_through :admin
-        post_routes "/news", schema: Brando.Post
+        post_routes "/news", schema: Brando.News.Post
 
   """
   alias Brando.Admin.PostController
-  alias Brando.Post
+  alias Brando.News.Post
   import Brando.Villain.Routes.Admin
 
   @doc """

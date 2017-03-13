@@ -1,4 +1,4 @@
-defmodule Brando.Post do
+defmodule Brando.News.Post do
   @moduledoc """
   Ecto schema for the Post schema, as well as image field definitions
   and helper functions for dealing with the post schema.
@@ -19,12 +19,12 @@ defmodule Brando.Post do
   @required_fields ~w(status language featured header slug creator_id)a
   @optional_fields ~w(lead publish_at tags data cover html)a
 
-  schema "posts" do
+  schema "news_posts" do
     field :language, :string
     field :header, :string
     field :slug, :string
     field :lead, :string
-    villain
+    villain()
     field :cover, Brando.Type.Image
     field :status, Status
     belongs_to :creator, Brando.User
@@ -32,8 +32,8 @@ defmodule Brando.Post do
     field :meta_keywords, :string
     field :featured, :boolean
     field :publish_at, Ecto.DateTime
-    timestamps
-    tags
+    timestamps()
+    tags()
   end
 
   has_image_field :cover,
@@ -66,7 +66,7 @@ defmodule Brando.Post do
   def changeset(schema, :create, params) do
     params =
       params
-      |> Tag.split_tags
+      |> Tag.split_tags()
 
     schema
     |> cast(params, @required_fields ++ @optional_fields)
@@ -86,9 +86,7 @@ defmodule Brando.Post do
   """
   @spec changeset(t, atom, Keyword.t | Options.t) :: t
   def changeset(schema, :update, params) do
-    params =
-      params
-      |> Tag.split_tags
+    params = Tag.split_tags(params)
 
     schema
     |> cast(params, @required_fields ++ @optional_fields)

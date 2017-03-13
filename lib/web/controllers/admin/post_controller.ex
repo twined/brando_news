@@ -11,7 +11,7 @@ defmodule Brando.Admin.PostController do
   import Brando.Utils.Schema, only: [put_creator: 2]
   import Brando.Plug.HTML
 
-  alias Brando.Post
+  alias Brando.News.Post
 
   plug :put_section, "news"
   plug :scrub_params, "post" when action in [:create, :update]

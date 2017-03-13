@@ -5,7 +5,7 @@ defmodule Brando.PostForm do
   """
 
   use Brando.Form
-  alias Brando.Post
+  alias Brando.News.Post
   import Brando.News.Gettext
 
   @doc false

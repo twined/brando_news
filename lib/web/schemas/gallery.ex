@@ -7,16 +7,15 @@ defmodule Brando.Gallery do
   @type t :: %__MODULE__{}
 
   use Brando.Web, :schema
-
   import Brando.News.Gettext
 
   @required_fields ~w(post_id imageseries_id creator_id)a
 
   schema "posts_imageseries" do
-    belongs_to :post, Brando.Post
+    belongs_to :post, Brando.News.Post
     belongs_to :imageseries, Brando.ImageSeries
     belongs_to :creator, Brando.User
-    timestamps
+    timestamps()
   end
 
   @doc """

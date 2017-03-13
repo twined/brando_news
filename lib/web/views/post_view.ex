@@ -7,7 +7,7 @@ defmodule Brando.Admin.PostView do
   import Brando.News.Gettext
 
   def attached_gallery(post) do
-    if enabled_galleries? do
+    if enabled_galleries?() do
       galleries = Brando.repo.all(Brando.Gallery)
       case get_gallery_for(galleries, post) do
         nil     ->
