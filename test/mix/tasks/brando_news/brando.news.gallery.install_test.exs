@@ -19,7 +19,7 @@ defmodule Mix.Tasks.BrandoNews.Gallery.InstallTest do
     File.rm_rf @project_path
 
     # Create path for app
-    File.mkdir_p Path.join(@project_path, "web")
+    File.mkdir_p Path.join([@project_path, "lib", "web", "templates"])
 
     # Create path for templates
     File.mkdir_p templates_path
