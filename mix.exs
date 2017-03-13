@@ -28,7 +28,7 @@ defmodule BrandoNews.Mixfile do
   end
 
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc.0", override: true, optional: true},
+    [{:phoenix, "~> 1.3.0-rc", override: true, optional: true},
      {:phoenix_ecto, "~> 3.2"},
      {:gettext, "~> 0.11"},
 
