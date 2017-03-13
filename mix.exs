@@ -9,7 +9,7 @@ defmodule BrandoNews.Mixfile do
      compilers: [:gettext, :phoenix] ++ Mix.compilers,
      elixirc_paths: elixirc_paths(Mix.env),
      test_coverage: [tool: ExCoveralls],
-     elixir: "~> 1.3",
+     elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
