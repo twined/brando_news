@@ -1,4 +1,17 @@
 defmodule Brando.News do
+  @moduledoc """
+  Domain for Brando.News
+  """
+  import Ecto.Query
+  alias Brando.News.Post
+
+  def list_news() do
+    Brando.repo.all(
+      from p in Post,
+        order_by: p.publish_at
+    )
+  end
+
   @doc """
   Gets the configuration for `module` under :brando,
   as set in config.exs
