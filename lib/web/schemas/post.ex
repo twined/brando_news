@@ -31,7 +31,7 @@ defmodule Brando.News.Post do
     field :meta_description, :string
     field :meta_keywords, :string
     field :featured, :boolean
-    field :publish_at, Ecto.DateTime
+    field :publish_at, :naive_datetime
     timestamps()
     tags()
   end

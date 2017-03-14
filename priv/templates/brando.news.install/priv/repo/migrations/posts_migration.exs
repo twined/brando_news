@@ -17,7 +17,7 @@ defmodule <%= application_module %>.Repo.Migrations.CreatePosts do
       add :meta_keywords,     :text
       add :css_classes,       :text
       add :featured,          :boolean
-      add :publish_at,        :datetime
+      add :publish_at,        :naive_datetime
       tags()
       timestamps()
     end
