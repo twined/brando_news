@@ -5,7 +5,7 @@ defmodule Brando.News do
   import Ecto.Query
   alias Brando.News.Post
 
-  def list_news() do
+  def list_posts() do
     Brando.repo.all(
       from p in Post,
         order_by: p.publish_at
