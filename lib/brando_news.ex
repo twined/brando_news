@@ -8,6 +8,7 @@ defmodule Brando.News do
   def list_posts() do
     Brando.repo.all(
       from p in Post,
+        where: p.status == ^:published,
         order_by: [p.featured, p.publish_at]
     )
   end
