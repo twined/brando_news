@@ -12,6 +12,15 @@ defmodule Brando.News do
     )
   end
 
+  def get_post_by(opts) do
+    post = Brando.repo.get_by(opts)
+    
+    case post do
+      nil  -> {:error, {:post, :not_found}}
+      post -> {:ok, post}
+    end
+  end
+
   @doc """
   Gets the configuration for `module` under :brando,
   as set in config.exs
