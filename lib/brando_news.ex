@@ -8,7 +8,7 @@ defmodule Brando.News do
   def list_posts() do
     Brando.repo.all(
       from p in Post,
-        order_by: p.publish_at
+        order_by: [p.featured, p.publish_at]
     )
   end
 
