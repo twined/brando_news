@@ -112,7 +112,7 @@ defmodule Brando.News.Post do
   """
   def order(query) do
     from m in query,
-      order_by: [asc: m.status, desc: m.featured, desc: m.inserted_at]
+      order_by: [asc: m.status, desc: m.featured, desc: m.publish_at]
   end
 
   @doc """
