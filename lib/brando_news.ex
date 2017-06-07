@@ -9,7 +9,7 @@ defmodule Brando.News do
     Brando.repo.all(
       from p in Post,
         where: p.status == ^:published,
-        order_by: [p.featured, p.publish_at]
+        order_by: [desc: p.featured, desc: p.publish_at]
     )
   end
 
