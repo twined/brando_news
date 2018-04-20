@@ -22,7 +22,7 @@ defmodule BrandoNews.Mixfile do
     [applications: applications(Mix.env)]
   end
 
-  defp applications(:test), do: applications(:all) ++ [:ecto, :phoenix]
+  defp applications(:test), do: applications(:all) ++ [:ecto, :phoenix, :absinthe]
   defp applications(_all) do
     [:gettext, :logger]
   end
@@ -37,6 +37,8 @@ defmodule BrandoNews.Mixfile do
      {:excoveralls, "~> 0.5", only: :test},
 
      {:brando, github: "twined/brando", branch: "develop", optional: true},
+     {:absinthe, "~> 1.4", optional: true},
+     {:absinthe_ecto, "~> 0.1", optional: true},
 
      # Documentation dependencies
      {:ex_doc, "~> 0.12", only: :docs},

@@ -12,6 +12,12 @@ defmodule Brando.News.Web do
     end
   end
 
+  def resolver do
+    quote do
+
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
