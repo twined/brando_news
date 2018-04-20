@@ -115,13 +115,6 @@ defmodule Brando.News.Post do
       order_by: [asc: m.status, desc: m.featured, desc: m.publish_at]
   end
 
-  @doc """
-  Preloads :creator field
-  """
-  def preload_creator(query) do
-    from m in query, preload: [:creator]
-  end
-
   #
   # Meta
 

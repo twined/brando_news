@@ -34,13 +34,6 @@ defmodule Brando.Gallery do
     |> validate_required(@required_fields)
   end
 
-  @doc """
-  Preloads :creator field
-  """
-  def preload_creator(query) do
-    from m in query, preload: [:creator]
-  end
-
   #
   # Meta
 

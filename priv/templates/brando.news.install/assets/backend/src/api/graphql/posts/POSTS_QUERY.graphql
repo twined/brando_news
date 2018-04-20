@@ -1,0 +1,23 @@
+query Posts {
+  posts {
+    id
+    status
+    header
+    slug
+    cover {
+      thumb: url(size: "thumb")
+    }
+    meta_description
+    meta_keywords
+    language
+    featured
+    gallery {
+      id
+      imageseries {
+        id
+      }
+    }
+    html
+    publish_at
+  }
+}

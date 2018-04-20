@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.BrandoNews.Install do
   use Mix.Task
+  import Mix.Ecto
   import Mix.Generator
 
   @moduledoc """
@@ -12,6 +13,31 @@ defmodule Mix.Tasks.BrandoNews.Install do
     # Migration files
     {:eex,  "templates/brando.news.install/priv/repo/migrations/posts_migration.exs",
             "priv/repo/migrations/timestamp_create_posts.exs"},
+    {:eex,  "templates/brando.news.install/priv/repo/migrations/posts_imageseries_migration.exs",
+            "priv/repo/migrations/timestamp_create_posts_imageseries.exs"},
+
+    {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/CREATE_POST_MUTATION.graphql",
+            "assets/backend/src/api/graphql/posts/CREATE_POST_MUTATION.graphql"},
+    {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/POSTS_QUERY.graphql",
+            "assets/backend/src/api/graphql/posts/POSTS_QUERY.graphql"},
+    {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/POST_QUERY.graphql",
+            "assets/backend/src/api/graphql/posts/POST_QUERY.graphql"},
+    {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/UPDATE_POST_MUTATION.graphql",
+            "assets/backend/src/api/graphql/posts/UPDATE_POST_MUTATION.graphql"},
+    {:copy, "templates/brando.news.install/assets/backend/src/api/post.js",
+            "assets/backend/src/api/post.js"},
+    {:copy, "templates/brando.news.install/assets/backend/src/menus/posts.js",
+            "assets/backend/src/menus/posts.js"},
+    {:copy, "templates/brando.news.install/assets/backend/src/routes/posts.js",
+            "assets/backend/src/routes/posts.js"},
+    {:copy, "templates/brando.news.install/assets/backend/src/store/modules/posts.js",
+            "assets/backend/src/store/modules/posts.js"},
+    {:copy, "templates/brando.news.install/assets/backend/src/views/news/PostCreateView.vue",
+            "assets/backend/src/views/news/PostCreateView.vue"},
+    {:copy, "templates/brando.news.install/assets/backend/src/views/news/PostEditView.vue",
+            "assets/backend/src/views/news/PostEditView.vue"},
+    {:copy, "templates/brando.news.install/assets/backend/src/views/news/PostListView.vue",
+            "assets/backend/src/views/news/PostListView.vue"},
   ]
 
   @static []
@@ -25,7 +51,28 @@ defmodule Mix.Tasks.BrandoNews.Install do
     end
   end
 
-  def run(_) do
+  def run(args) do
+    repo = parse_repo(args) |> List.first
+    ensure_repo(repo, args)
+    ensure_started(repo, args)
+    app = Mix.Project.config()[:app]
+    binding = [application_module: Phoenix.Naming.camelize(Atom.to_string(app)),
+               application_name: Atom.to_string(app)]
+
+    copy_from "./", binding, @new
+
+    creator = repo.all(Brando.User) |> List.first
+
+    # Add a "Galleries" category to images.
+    Brando.ImageCategory.changeset(%Brando.ImageCategory{}, :create, %{
+      name: "Post galleries",
+      slug: "post-galleries",
+      creator_id: creator.id
+    })
+    |> repo.insert!
+
+    Mix.shell.info "\nBrando News Gallery finished installing."
+
     app = Mix.Project.config()[:app]
     binding = [application_module: Phoenix.Naming.camelize(Atom.to_string(app)),
                application_name: Atom.to_string(app)]
@@ -52,8 +99,12 @@ defmodule Mix.Tasks.BrandoNews.Install do
       target = Path.join(target_dir, target_path)
 
       case format do
-        :eex  -> contents = EEx.eval_string(render(source), binding, file: source)
-                 create_file(target, contents)
+        :copy ->
+          File.mkdir_p!(Path.dirname(target))
+          File.copy!(Path.join(@root, source), target)
+        :eex  ->
+          contents = EEx.eval_string(render(source), binding, file: source)
+          create_file(target, contents)
       end
     end
   end

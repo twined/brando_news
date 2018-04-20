@@ -6,48 +6,34 @@ defmodule Mix.Tasks.BrandoNews.Gallery.InstallTest do
   import MixHelper
   alias BrandoNews.Factory
 
-  @app_name  "photo_blog_extra"
-  @tmp_path  tmp_path()
+  @app_name "photo_blog"
+  @tmp_path tmp_path()
   @project_path Path.join(@tmp_path, @app_name)
+  @root_path Path.expand(".")
 
   setup_all do
-    templates_path = Path.join([@project_path, "deps", "brando_news",
-                                "lib", "web", "templates"])
-    root_path =  File.cwd!
+    templates_path = Path.join([@project_path, "deps", "brando", "lib", "web", "templates"])
 
     # Clean up
     File.rm_rf @project_path
 
     # Create path for app
-    File.mkdir_p Path.join([@project_path, "lib", "web", "templates"])
+    File.mkdir_p Path.join(@project_path, "brando")
 
     # Create path for templates
     File.mkdir_p templates_path
 
-    # Copy templates into `deps/?/templates`
-    # to mimic a real Phoenix application
-    File.cp_r! Path.join([root_path, "lib", "web", "templates"]), templates_path
-
     # Move into the project directory to run the generator
     File.cd! @project_path
+
+    on_exit fn ->
+      File.cd! @root_path
+    end
   end
 
-  test "brando.news.gallery.install" do
+  test "brando.news.install" do
     _ = Factory.insert(:user)
-    Mix.Tasks.BrandoNews.Gallery.Install.run(["-r", "BrandoNews.Integration.TestRepo"])
-    assert_received {:mix_shell, :info, ["\nBrando News Gallery finished installing."]}
-    assert [migration_file] =
-      Path.wildcard("priv/repo/migrations/*_create_posts_imageseries.exs")
-
-    assert_file migration_file, fn file ->
-      assert file =~ "defmodule BrandoNews.Repo.Migrations.CreateGalleryPosts"
-    end
-
-    assert [js_file] =
-      Path.wildcard("assets/js/admin/news.js")
-
-    assert_file js_file, fn file ->
-      assert file =~ "class News {"
-    end
+    send self(), {:mix_shell_input, :yes?, true}
+    Mix.Tasks.BrandoNews.Install.run(["-r", "BrandoNews.Integration.TestRepo"])
   end
 end

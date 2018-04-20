@@ -23,69 +23,87 @@ Run migrations
 
     $ mix ecto.migrate
 
-Add to your `web/router.ex`:
+Add to your `assets/backend/src/routes/index.js`
 
 ```diff
++ import posts from './posts'
 
-    defmodule MyApp.Router do
-      use MyApp.Web, :router
-      # ...
-+     import Brando.News.Routes.Admin
-
-      scope "/admin", as: :admin do
-        pipe_through :admin
-        dashboard_routes   "/"
-        user_routes        "/users"
-+       post_routes        "/news"
-      end
-    end
+  export default [].concat(
+    dashboard,
++   posts
+  )
 ```
 
-Add to your `lib/my_app.ex`:
+Add to your `assets/backend/src/menus/index.js`
 
 ```diff
-    def start(_type, _args) do
-      import Supervisor.Spec, warn: false
++ import posts from './posts'
 
-      children = [
-        # Start the endpoint when the application starts
-        supervisor(MyApp.Endpoint, []),
-        # Start the Ecto repository
-        supervisor(MyApp.Repo, []),
-        # Here you could define other workers and supervisors as children
-        # worker(MyApp.Worker, [arg1, arg2, arg3]),
-      ]
-
-+     Brando.Registry.register(Brando.News)
+  export function installMenus (store) {
+    store.commit('menu/STORE_MENU', [].concat(
++     posts
+    ))
+}
 ```
 
-# Post gallery
+Add to your `assets/backend/src/store/index.js`
 
-If you want to add functionality to attach a gallery to a news post, you first have to install it:
+```diff
++ import { posts } from './modules/posts'
 
-  * `$ mix brando_news.gallery.install`
-  * `$ mix ecto.migrate`
-  * Add to your otp_app's `conf/brando.exs`:
-    ```elixir
-    config :brando, Brando.News,
-      enable_galleries: true
-    ```
-  * Add this popup form to your otp_app's start up:
-    ```elixir
-    Brando.PopupForm.Registry.register(:gallery, "imageseries", Brando.ImageSeriesForm,
-                                       gettext("Create gallery"), [:id, :slug])
-    ```
-  * Add to `web/static/js/admin/custom.js`:
-    ```javascript
-    import News from './news';
-    ```
+  # ...
 
-# Limited Villain blocks
+  const store = new Vuex.Store({
+    modules: {
+      posts,
+      ...kurtzBaseStoreModules
+    },
+    strict: debug
+  })
+```
 
-If you want to limit the available Villain blocks in the editor, you can pass `villain_blocks` to the config:
+And to your `lib/my_app_web/channels/admin_channel.ex`
 
 ```elixir
+alias Brando.News
 
-config :brando, Brando.News,
-  villain_blocks: ["Markdown"]
+def handle_in("post:delete", %{"id" => id}, socket) do
+  {:ok, _} = News.delete_post(id)
+  {:reply, {:ok, %{status: 200}}, socket}
+end
+
+def handle_in("gallery:create", params, socket) do
+  {:ok, gallery} = News.create_gallery(params)
+  gallery = Map.merge(gallery, %{imageseries: %{id: gallery.imageseries_id}, creator: nil, post: nil})
+  {:reply, {:ok, %{status: 200, gallery: gallery}}, socket}
+end
+
+def handle_in("gallery:delete", %{"id" => id}, socket) do
+  News.delete_gallery(id)
+  {:reply, {:ok, %{status: 200}}, socket}
+end
+
 ```
+
+Add to your `lib/my_app/graphql/schema.ex`
+
+```diff
++ import_types Brando.News.Schema.Types.Post
+  query do
+    import_brando_queries()
+
+    # local queries
+    import_fields :client_queries
++   import_fields :post_queries
+    import_fields :project_queries
+    import_fields :illustrator_queries
+  end
+
+  mutation do
+    import_brando_mutations()
+
+    # local mutations
+    import_fields :client_mutations
++   import_fields :post_mutations
+    import_fields :illustrator_mutations
+  end

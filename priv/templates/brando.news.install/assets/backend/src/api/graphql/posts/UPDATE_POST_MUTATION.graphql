@@ -1,0 +1,8 @@
+mutation UpdatePost($post_id: ID!, $post_params: UpdatePostParams) {
+  update_post(
+    post_params: $post_params,
+    post_id: $post_id
+  ) {
+    id
+  }
+}

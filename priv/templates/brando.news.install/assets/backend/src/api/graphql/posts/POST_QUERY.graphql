@@ -1,0 +1,26 @@
+query Post ($postId: ID!) {
+  post (postId: $postId) {
+    id
+    status
+    header
+    slug
+    cover {
+      thumb: url(size: "thumb")
+      croplarge: url(size: "croplarge")
+    }
+    meta_description
+    meta_keywords
+    language
+    featured
+    gallery {
+      id
+      imageseries {
+        id
+      }
+    }
+    lead
+    data
+    html
+    publish_at
+  }
+}

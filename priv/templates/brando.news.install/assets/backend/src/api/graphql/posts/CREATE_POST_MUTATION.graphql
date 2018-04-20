@@ -1,0 +1,7 @@
+mutation CreatePost($post_params: CreatePostParams) {
+  create_post(
+    post_params: $post_params,
+  ) {
+    id
+  }
+}
