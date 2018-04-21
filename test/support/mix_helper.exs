@@ -10,10 +10,20 @@ defmodule MixHelper do
   end
 
   def in_tmp(which, function) do
-    path = Path.join(tmp_path(), which)
-    File.rm_rf! path
-    File.mkdir_p! path
-    File.cd! path, function
+    path = Path.join([tmp_path(), random_string(10), to_string(which)])
+    cwd = File.cwd!()
+    try do
+      File.rm_rf!(path)
+      File.mkdir_p!(path)
+      File.cd!(path, function)
+    after
+      File.cd!(cwd)
+      File.rm_rf!(path)
+    end
+  end
+
+  defp random_string(len) do
+    len |> :crypto.strong_rand_bytes() |> Base.encode64() |> binary_part(0, len)
   end
 
   def assert_file(file) do
