@@ -68,48 +68,6 @@
             :error-text="errors.first('post[slug]')"
           />
 
-          <div class="row">
-            <div class="col">
-              <KInputMultiSelect
-                v-model="post.illustrators"
-                :value="post.illustrators"
-                :options="illustrators"
-                optionValueKey="id"
-                optionLabelKey="name"
-                name="post[illustrators]"
-                label="Illustratører knyttet til posten"
-                data-vv-name="post[illustrators]"
-                data-vv-value-path="innerValue"
-                :has-error="errors.has('post[illustrators]')"
-                :error-text="errors.first('post[illustrators]')"
-              />
-            </div>
-            <div class="col">
-              <KInputMultiSelect
-                v-model="post.clients"
-                :value="post.clients"
-                :options="clients"
-                optionValueKey="id"
-                optionLabelKey="name"
-                name="post[clients]"
-                label="Kunder/byråer knyttet til posten"
-                data-vv-name="post[clients]"
-                data-vv-value-path="innerValue"
-                :has-error="errors.has('post[clients]')"
-                :error-text="errors.first('post[clients]')"
-              />
-            </div>
-          </div>
-
-          <ModalAddClient
-            :showModal="showAddClientModal"
-            @close="closeAddClientModal"
-            :saveCallback="onClientSave"
-          />
-          <button class="btn btn-outline-secondary mb-4" @click.prevent="openAddClientModal">
-            Legg til kunde/byrå
-          </button>
-
           <Villain
             :value="post.data"
             @input="post.data = $event"
@@ -171,7 +129,6 @@
                 v-model="post.cover"
                 name="post[cover]"
                 label="Omslag"
-                v-validate="'required'"
                 data-vv-name="post[cover]"
                 data-vv-value-path="innerValue"
                 :has-error="errors.has('post[cover]')"
@@ -198,30 +155,18 @@
 import nprogress from 'nprogress'
 import showError from 'kurtz/lib/utils/showError'
 import { postAPI } from '@/api/post'
-import ModalAddClient from '@/components/clients/modals/ModalAddClient'
 
 export default {
-  components: {
-    ModalAddClient
-  },
+  components: {},
 
   data () {
     return {
-      showAddClientModal: false,
       loading: 0,
-      illustrators: [],
-      clients: [],
-      agencies: [],
       post: {
         header: '',
         slug: '',
         data: '',
-
-        illustrators: [],
-        clients: [],
-
         cover: '',
-
         status: 'pending',
         language: 'en',
         featured: false,
@@ -235,50 +180,9 @@ export default {
     'adminChannel'
   ],
 
-  created () {
-    this.listIllustrators()
-    this.listAgencies()
-    this.listClients()
-  },
+  created () {},
 
   methods: {
-    onClientSave (client) {
-      this.clients = [client, ...this.clients]
-      this.agencies = [client, ...this.agencies]
-    },
-
-    openAddClientModal () {
-      this.showAddClientModal = true
-    },
-
-    closeAddClientModal () {
-      this.showAddClientModal = false
-    },
-
-    listIllustrators () {
-      this.adminChannel.channel
-        .push('illustrators:list')
-        .receive('ok', payload => {
-          this.illustrators = payload.illustrators
-        })
-    },
-
-    listAgencies () {
-      this.adminChannel.channel
-        .push('agencies:list')
-        .receive('ok', payload => {
-          this.agencies = payload.agencies
-        })
-    },
-
-    listClients () {
-      this.adminChannel.channel
-        .push('clients:list')
-        .receive('ok', payload => {
-          this.clients = payload.clients
-        })
-    },
-
     validate () {
       this.$validator.validateAll().then(() => {
         this.save()
@@ -292,8 +196,9 @@ export default {
     async save () {
       let params = Object.assign({}, this.post)
 
-      params.illustrators = params.illustrators.map(i => parseInt(i.id))
-      params.clients = params.clients.map(i => parseInt(i.id))
+      if (!params.cover) {
+        delete params.cover
+      }
 
       try {
         nprogress.start()

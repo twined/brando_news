@@ -68,39 +68,6 @@
             :error-text="errors.first('post[slug]')"
           />
 
-          <div class="row">
-            <div class="col">
-              <KInputMultiSelect
-                v-model="post.illustrators"
-                :value="post.illustrators"
-                :options="illustrators"
-                optionValueKey="id"
-                optionLabelKey="name"
-                name="post[illustrators]"
-                label="Illustratører knyttet til posten"
-                data-vv-name="post[illustrators]"
-                data-vv-value-path="innerValue"
-                :has-error="errors.has('post[illustrators]')"
-                :error-text="errors.first('post[illustrators]')"
-              />
-            </div>
-            <div class="col">
-              <KInputMultiSelect
-                v-model="post.clients"
-                :value="post.clients"
-                :options="clients"
-                optionValueKey="id"
-                optionLabelKey="name"
-                name="post[clients]"
-                label="Kunder/byråer knyttet til posten"
-                data-vv-name="post[clients]"
-                data-vv-value-path="innerValue"
-                :has-error="errors.has('post[clients]')"
-                :error-text="errors.first('post[clients]')"
-              />
-            </div>
-          </div>
-
           <KInputTextarea
             v-model="post.lead"
             :value="post.lead"
@@ -211,19 +178,11 @@ export default {
   data () {
     return {
       loading: 0,
-      illustrators: [],
-      clients: [],
-      agencies: [],
       post: {
         header: '',
         slug: '',
         data: '',
-
-        illustrators: [],
-        clients: [],
-
         cover: '',
-
         status: 'pending',
         language: 'en',
         featured: false,
@@ -249,41 +208,11 @@ export default {
     const post = await this.getPost(this.postId)
     this.post = {...post}
     console.log(this.post)
-
-    this.listIllustrators()
-    this.listAgencies()
-    this.listClients()
     this.loading--
   },
 
   methods: {
-    listIllustrators () {
-      this.adminChannel.channel
-        .push('illustrators:list')
-        .receive('ok', payload => {
-          this.illustrators = payload.illustrators
-        })
-    },
-
-    listAgencies () {
-      this.adminChannel.channel
-        .push('agencies:list')
-        .receive('ok', payload => {
-          this.agencies = payload.agencies
-        })
-    },
-
-    listClients () {
-      this.adminChannel.channel
-        .push('clients:list')
-        .receive('ok', payload => {
-          this.clients = payload.clients
-        })
-    },
-
     validate () {
-      this.inject()
-
       this.$validator.validateAll().then(() => {
         this.save()
       }).catch(err => {
@@ -296,9 +225,6 @@ export default {
     async save () {
       this.loading = false
       let params = Object.assign({}, this.post)
-
-      params.illustrators = params.illustrators.map(i => parseInt(i.id))
-      params.clients = params.clients.map(i => parseInt(i.id))
 
       delete params['__typename']
       delete params.gallery
@@ -319,10 +245,6 @@ export default {
         this.loading--
         showError(err)
       }
-    },
-
-    inject () {
-      this.post.data = this.$refs.villain.$refs.villain.getJSON()
     },
 
     ...mapActions('posts', [

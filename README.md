@@ -10,7 +10,7 @@ Add brando_news to your list of dependencies in `mix.exs`:
     def deps do
       [
         {:brando, github: "twined/brando"},
-+       {:brando_news, github: "twined/brando_news"}
++       {:brando_news, github: "twined/brando_news", branch: "develop"}
       ]
     end
 ```

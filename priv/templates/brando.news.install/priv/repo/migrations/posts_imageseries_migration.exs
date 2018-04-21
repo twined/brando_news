@@ -4,9 +4,9 @@ defmodule <%= application_module %>.Repo.Migrations.CreateGalleryPosts do
   def up do
     create table(:news_posts_imageseries) do
       add :post_id,        references(:news_posts, on_delete: :delete_all)
-      add :imageseries_id, references(:news_imageseries, on_delete: :delete_all)
+      add :imageseries_id, references(:imageseries, on_delete: :delete_all)
       add :creator_id,     references(:users)
-      timestamps
+      timestamps()
     end
   end
 

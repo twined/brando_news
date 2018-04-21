@@ -32,6 +32,7 @@ defmodule Brando.News.Post do
     field :meta_keywords, :string
     field :featured, :boolean
     field :publish_at, :naive_datetime
+    has_one :gallery, Brando.Gallery
     timestamps()
     tags()
   end

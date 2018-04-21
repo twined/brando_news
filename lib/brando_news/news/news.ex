@@ -27,7 +27,7 @@ defmodule Brando.News do
     post =
       Post
       |> where(id: ^id)
-      |> preload([:gallery, :creator, :project])
+      |> preload([:gallery, :creator])
       |> Brando.repo.one
 
     case post do

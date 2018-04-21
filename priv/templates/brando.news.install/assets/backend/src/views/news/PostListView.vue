@@ -33,22 +33,6 @@
                   </td>
                   <td>
                     <strong>{{ post.header }}</strong>
-                    <br />
-                    <span
-                      class="badge badge-xs badge-light mr-1 text-uppercase"
-                      :key="i.id"
-                      v-for="i in post.illustrators">
-                      <i class="fal fa-fw fa-pencil-alt mr-1"> </i>
-                      {{ i.name }}
-                    </span>
-                    <br v-if="post.clients.length" />
-                    <span
-                      class="badge badge-xs badge-light text-uppercase mr-1"
-                      :key="i.id"
-                      v-for="i in post.clients">
-                      <i class="fal fa-fw fa-suitcase mr-1"> </i>
-                      {{ i.name }}
-                    </span>
                   </td>
                   <td class="fit">
                     <Flag :value="post.language" />
@@ -125,8 +109,6 @@
 import { mapActions, mapGetters } from 'vuex'
 import { alertConfirm } from 'kurtz/lib/utils/alerts'
 import Status from 'kurtz/lib/components/Status'
-import ModalAddVideo from '../../components/videos/modals/ModalAddVideo'
-import ModalEditVideo from '../../components/videos/modals/ModalEditVideo'
 import ModalCreateImageSeries from 'kurtz/lib/components/images/modals/ModalCreateImageSeries'
 import ModalImageSeries from 'kurtz/lib/components/images/modals/ModalImageSeries'
 import ImageSelection from 'kurtz/lib/components/images/ImageSelection'
@@ -134,8 +116,6 @@ import ImageSelection from 'kurtz/lib/components/images/ImageSelection'
 export default {
   components: {
     Status,
-    ModalAddVideo,
-    ModalEditVideo,
     ModalCreateImageSeries,
     ModalImageSeries,
     ImageSelection
