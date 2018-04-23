@@ -107,3 +107,7 @@ Add to your `lib/my_app/graphql/schema.ex`
 +   import_fields :post_mutations
     import_fields :illustrator_mutations
   end
+```
+
+If you need to customize the schema, just copy it from the `brando_news` sourcecode and
+import it like above but from your local module

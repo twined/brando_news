@@ -1,4 +1,4 @@
-defmodule Brando.Gallery do
+defmodule <%= application_module %>.News.Gallery do
   @moduledoc """
   Ecto schema for the Gallery schema.
   This schema connects a post and an image series
@@ -6,13 +6,13 @@ defmodule Brando.Gallery do
 
   @type t :: %__MODULE__{}
 
-  use Brando.Web, :schema
-  import Brando.News.Gettext
+  use <%= application_module %>Web, :schema
+  import <%= application_module %>Web.Gettext
 
   @required_fields ~w(post_id imageseries_id creator_id)a
 
   schema "news_posts_imageseries" do
-    belongs_to :post, Brando.News.Post
+    belongs_to :post, <%= application_module %>.News.Post
     belongs_to :imageseries, Brando.ImageSeries
     belongs_to :creator, Brando.User
     timestamps()

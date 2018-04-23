@@ -16,6 +16,13 @@ defmodule Mix.Tasks.BrandoNews.Install do
     {:eex,  "templates/brando.news.install/priv/repo/migrations/posts_imageseries_migration.exs",
             "priv/repo/migrations/timestamp_create_posts_imageseries.exs"},
 
+    # Schemas
+    {:eex,  "templates/brando.news.install/lib/application_name/news/gallery.ex",
+            "lib/application_name/news/gallery.ex"},
+    {:eex,  "templates/brando.news.install/lib/application_name/news/post.ex",
+            "lib/application_name/news/post.ex"},
+
+    # Vue/JS files
     {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/CREATE_POST_MUTATION.graphql",
             "assets/backend/src/api/graphql/posts/CREATE_POST_MUTATION.graphql"},
     {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/POSTS_QUERY.graphql",
