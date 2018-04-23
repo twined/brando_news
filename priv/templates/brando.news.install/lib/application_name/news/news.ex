@@ -1,7 +1,7 @@
-defmodule Brando.News do
-  alias Brando.News.Post
-  alias Brando.Gallery
-
+defmodule <%= application_module %>.News do
+  alias <%= application_module %>.News.Post
+  alias <%= application_module %>.News.Gallery
+  alias <%= application_module %>.Repo
   alias Brando.Images
 
   import Ecto.Query
@@ -10,7 +10,7 @@ defmodule Brando.News do
   def get_post_by(slug: slug) do
     images_query = from i in Brando.Image, order_by: i.sequence
 
-    post = Brando.repo.one(
+    post = Repo.one(
       from p in Post,
         where: p.slug == ^slug and
                p.status == ^:published,
@@ -28,7 +28,7 @@ defmodule Brando.News do
       Post
       |> where(id: ^id)
       |> preload([:gallery, :creator])
-      |> Brando.repo.one
+      |> Repo.one
 
     case post do
       nil -> {:error, {:post, :not_found}}
@@ -40,7 +40,7 @@ defmodule Brando.News do
     query = order_by(Post, [p], desc: p.publish_at)
     query = filter && where(query, [p], p.status == ^filter) || query
 
-    posts = Brando.repo.all(query)
+    posts = Repo.all(query)
 
     {:ok, posts}
   end
@@ -51,7 +51,7 @@ defmodule Brando.News do
         where: p.status == ^:published,
         order_by: [desc: p.publish_at]
 
-    page = Brando.repo.paginate(query, params)
+    page = Repo.paginate(query, params)
 
     {:ok, page}
   end
@@ -61,7 +61,7 @@ defmodule Brando.News do
     query = filter && where(query, [p], p.status == ^filter) || query
     query = limit && limit(query, ^limit) || query
 
-    posts = Brando.repo.all(query)
+    posts = Repo.all(query)
 
     {:ok, posts}
   end
@@ -70,14 +70,14 @@ defmodule Brando.News do
     %Post{}
     |> put_creator(user)
     |> Post.changeset(:create, params)
-    |> Brando.repo.insert
+    |> Repo.insert
   end
 
   def update_post(post_id, params) do
     {:ok, post} = get_post(post_id)
     post
     |> Post.changeset(:update, params)
-    |> Brando.repo.update
+    |> Repo.update
   end
 
   def delete_post(id) do
@@ -88,7 +88,7 @@ defmodule Brando.News do
       Images.delete_series(post.gallery.imageseries_id)
     end
 
-    Brando.repo.delete!(post)
+    Repo.delete!(post)
 
     {:ok, post}
   end
@@ -96,11 +96,11 @@ defmodule Brando.News do
   def create_gallery(params) do
     %Gallery{}
     |> Gallery.changeset(params)
-    |> Brando.repo.insert
+    |> Repo.insert
   end
 
   def delete_gallery(id) do
-    gallery = Brando.repo.get(Gallery, id)
-    Brando.repo.delete(gallery)
+    gallery = Repo.get(Gallery, id)
+    Repo.delete(gallery)
   end
 end

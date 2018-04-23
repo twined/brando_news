@@ -22,6 +22,16 @@ defmodule Mix.Tasks.BrandoNews.Install do
     {:eex,  "templates/brando.news.install/lib/application_name/news/post.ex",
             "lib/application_name/news/post.ex"},
 
+    # Context
+    {:eex,  "templates/brando.news.install/lib/application_name/news/news.ex",
+            "lib/application_name/news/news.ex"},
+
+    # GraphQL
+    {:eex,  "templates/brando.news.install/lib/application_name/graphql/schema/types/post.ex",
+            "lib/application_name/graphql/schema/types/post.ex"},
+    {:eex,  "templates/brando.news.install/lib/application_name/graphql/resolvers/post_resolver.ex",
+            "lib/application_name/graphql/resolvers/post_resolver.ex"},
+
     # Vue/JS files
     {:copy, "templates/brando.news.install/assets/backend/src/api/graphql/posts/CREATE_POST_MUTATION.graphql",
             "assets/backend/src/api/graphql/posts/CREATE_POST_MUTATION.graphql"},

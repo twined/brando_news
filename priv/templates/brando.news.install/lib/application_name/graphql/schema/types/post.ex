@@ -1,5 +1,5 @@
-defmodule Brando.News.Schema.Types.Post do
-  use Brando.News.Web, :absinthe
+defmodule <%= application_module %>.Schema.Types.Post do
+  use <%= application_module %>Web, :absinthe
 
   object :post do
     field :id, :id
@@ -60,13 +60,13 @@ defmodule Brando.News.Schema.Types.Post do
   object :post_queries do
     @desc "Get all posts"
     field :posts, type: list_of(:post) do
-      resolve &Brando.News.PostResolver.all/2
+      resolve &<%= application_module %>.News.PostResolver.all/2
     end
 
     @desc "Get post"
     field :post, type: :post do
       arg :post_id, non_null(:id)
-      resolve &Brando.News.PostResolver.find/2
+      resolve &<%= application_module %>.News.PostResolver.find/2
     end
   end
 
@@ -74,14 +74,14 @@ defmodule Brando.News.Schema.Types.Post do
     field :create_post, type: :post do
       arg :post_params, non_null(:create_post_params)
 
-      resolve &Brando.News.PostResolver.create/2
+      resolve &<%= application_module %>.News.PostResolver.create/2
     end
 
     field :update_post, type: :post do
       arg :post_id, non_null(:id)
       arg :post_params, :update_post_params
 
-      resolve &Brando.News.PostResolver.update/2
+      resolve &<%= application_module %>.News.PostResolver.update/2
     end
   end
 end

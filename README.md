@@ -88,7 +88,6 @@ end
 Add to your `lib/my_app/graphql/schema.ex`
 
 ```diff
-+ import_types Brando.News.Schema.Types.Post
   query do
     import_brando_queries()
 
@@ -109,5 +108,8 @@ Add to your `lib/my_app/graphql/schema.ex`
   end
 ```
 
-If you need to customize the schema, just copy it from the `brando_news` sourcecode and
-import it like above but from your local module
+Add to your `lib/my_app/graphql/schema/types.ex`
+
+```diff
++ import_types FilmFarms.Schema.Types.Post
+``
