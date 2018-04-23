@@ -2,7 +2,6 @@ defmodule <%= application_module %>.News.PostResolver do
   @moduledoc """
   Resolver for posts
   """
-  use <%= application_module %>Web, :resolver
   alias <%= application_module %>.News
 
   @doc """
