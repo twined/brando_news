@@ -65,7 +65,7 @@ Add to your `assets/backend/src/store/index.js`
 And to your `lib/my_app_web/channels/admin_channel.ex`
 
 ```elixir
-alias Brando.News
+alias MyApp.News
 
 def handle_in("post:delete", %{"id" => id}, socket) do
   {:ok, _} = News.delete_post(id)
