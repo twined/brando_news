@@ -29,7 +29,10 @@
                     <Status :status="post.status" />
                   </td>
                   <td>
-                    <img :src="post.cover.thumb" class="avatar-sm img-border-lg" />
+                    <img
+                      v-if="post.cover"
+                      :src="post.cover.thumb"
+                      class="avatar-sm img-border-lg" />
                   </td>
                   <td>
                     <strong>{{ post.header }}</strong>
