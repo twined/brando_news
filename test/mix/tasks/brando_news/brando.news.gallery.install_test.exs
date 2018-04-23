@@ -10,6 +10,7 @@ defmodule Mix.Tasks.BrandoNews.Gallery.InstallTest do
   setup do
     send self(), {:mix_shell_input, :yes?, true}
     send self(), {:mix_shell_input, :yes?, true}
+    send self(), {:mix_shell_input, :yes?, true}
     :ok
   end
 
