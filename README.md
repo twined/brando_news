@@ -111,5 +111,5 @@ Add to your `lib/my_app/graphql/schema.ex`
 Add to your `lib/my_app/graphql/schema/types.ex`
 
 ```diff
-+ import_types FilmFarms.Schema.Types.Post
++ import_types MyApp.Schema.Types.Post
 ``
