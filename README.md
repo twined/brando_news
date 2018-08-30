@@ -65,24 +65,7 @@ Add to your `assets/backend/src/store/index.js`
 And to your `lib/my_app_web/channels/admin_channel.ex`
 
 ```elixir
-alias MyApp.News
-
-def handle_in("post:delete", %{"id" => id}, socket) do
-  {:ok, _} = News.delete_post(id)
-  {:reply, {:ok, %{status: 200}}, socket}
-end
-
-def handle_in("gallery:create", params, socket) do
-  {:ok, gallery} = News.create_gallery(params)
-  gallery = Map.merge(gallery, %{imageseries: %{id: gallery.imageseries_id}, creator: nil, post: nil})
-  {:reply, {:ok, %{status: 200, gallery: gallery}}, socket}
-end
-
-def handle_in("gallery:delete", %{"id" => id}, socket) do
-  News.delete_gallery(id)
-  {:reply, {:ok, %{status: 200}}, socket}
-end
-
+use Brando.News.Mixin.Channels.AdminChannelMixin, MyApp.News
 ```
 
 Add to your `lib/my_app/graphql/schema.ex`

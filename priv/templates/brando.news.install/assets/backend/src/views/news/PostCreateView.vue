@@ -68,6 +68,19 @@
             :error-text="errors.first('post[slug]')"
           />
 
+          <KInputTextarea
+            v-model="post.lead"
+            :value="post.lead"
+            :rows="2"
+            name="post[lead]"
+            type="text"
+            label="Ingress"
+            data-vv-name="post[lead]"
+            data-vv-value-path="innerValue"
+            :has-error="errors.has('post[lead]')"
+            :error-text="errors.first('post[lead]')"
+          />
+
           <Villain
             :value="post.data"
             @input="post.data = $event"
