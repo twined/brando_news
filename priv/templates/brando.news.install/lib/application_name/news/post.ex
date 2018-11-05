@@ -113,36 +113,4 @@ defmodule <%= application_module %>.News.Post do
     from m in query,
       order_by: [asc: m.status, desc: m.featured, desc: m.publish_at]
   end
-
-  #
-  # Meta
-
-  use Brando.Meta.Schema, [
-    singular: gettext("post"),
-    plural: gettext("posts"),
-    repr: &("#{&1.header}"),
-    fields: [
-      id: "№",
-      status: gettext("Status"),
-      featured: gettext("Featured"),
-      language: gettext("Language"),
-      cover: gettext("Cover"),
-      header: gettext("Header"),
-      slug: gettext("Slug"),
-      lead: gettext("Lead"),
-      data: gettext("Data"),
-      html: gettext("HTML"),
-      creator: gettext("Creator"),
-      meta_description: gettext("META description"),
-      meta_keywords: gettext("META keywords"),
-      publish_at: gettext("Publish at"),
-      tags: gettext("Tags"),
-      inserted_at: gettext("Inserted at"),
-      updated_at: gettext("Updated at"),
-    ],
-    help: [
-      featured: gettext("The post is prioritized, taking precedence over pub. date"),
-      cover: gettext("Photo attached to the news post, if your frontend supports it.")
-    ]
-  ]
 end

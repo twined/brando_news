@@ -33,21 +33,4 @@ defmodule <%= application_module %>.News.Gallery do
     |> cast(params, @required_fields)
     |> validate_required(@required_fields)
   end
-
-  #
-  # Meta
-
-  use Brando.Meta.Schema, [
-    singular: gettext("attached gallery"),
-    plural: gettext("attached galleries"),
-    repr: &("#{&1.id}"),
-    fields: [
-      id: "№",
-      creator: gettext("Creator"),
-      post: gettext("Post"),
-      imageseries: gettext("Image series"),
-      inserted_at: gettext("Inserted at"),
-      updated_at: gettext("Updated at"),
-    ]
-  ]
 end

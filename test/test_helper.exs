@@ -5,7 +5,9 @@
 ExUnit.start()
 
 defmodule BrandoNews.Integration.TestRepo do
-  use Ecto.Repo, otp_app: :brando_news
+  use Ecto.Repo,
+    otp_app: :brando_news,
+    adapter: Ecto.Adapters.Postgres
 end
 
 defmodule BrandoNews.Integration.Endpoint do

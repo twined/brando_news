@@ -1,7 +1,7 @@
 defmodule BrandoNews.Mixfile do
   use Mix.Project
 
-  @version "0.1.0-dev"
+  @version "1.0.0-dev"
 
   def project do
     [app: :brando_news,
@@ -28,9 +28,12 @@ defmodule BrandoNews.Mixfile do
   end
 
   defp deps do
-    [{:phoenix, "~> 1.3.0-rc", override: true, optional: true},
-     {:phoenix_ecto, "~> 3.2"},
+    [{:phoenix, "~> 1.4.0-rc", override: true, optional: true},
+     {:phoenix_ecto, "~> 4.0", optional: true},
      {:gettext, "~> 0.11"},
+     {:ecto, "~> 3.0", override: true},
+     {:ecto_sql, "~> 3.0-pre", override: true},
+     {:jason, "~> 1.1"},
 
      # Test dependencies
      {:ex_machina, "~> 2.0", only: :test},
@@ -42,7 +45,7 @@ defmodule BrandoNews.Mixfile do
 
      # Documentation dependencies
      {:ex_doc, "~> 0.12", only: :docs},
-     {:inch_ex, "~> 0.5", only: :docs}
+     {:inch_ex, "~> 1.0", only: :docs}
     ]
   end
 

@@ -71,7 +71,7 @@ defmodule Mix.Tasks.BrandoNews.Install do
   def run(args) do
     repo = parse_repo(args) |> List.first
     ensure_repo(repo, args)
-    ensure_started(repo, args)
+    Application.ensure_started(repo, args)
     app = Mix.Project.config()[:app]
     binding = [application_module: Phoenix.Naming.camelize(Atom.to_string(app)),
                application_name: Atom.to_string(app)]
