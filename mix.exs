@@ -28,11 +28,11 @@ defmodule BrandoNews.Mixfile do
   end
 
   defp deps do
-    [{:phoenix, "~> 1.4.0-rc", override: true, optional: true},
+    [{:phoenix, "~> 1.4.0", optional: true},
      {:phoenix_ecto, "~> 4.0", optional: true},
      {:gettext, "~> 0.11"},
-     {:ecto, "~> 3.0", override: true},
-     {:ecto_sql, "~> 3.0-pre", override: true},
+     {:ecto, "~> 3.0"},
+     {:ecto_sql, "~> 3.0"},
      {:jason, "~> 1.1"},
 
      # Test dependencies
@@ -40,8 +40,8 @@ defmodule BrandoNews.Mixfile do
      {:excoveralls, "~> 0.5", only: :test},
 
      {:brando, github: "twined/brando", branch: "develop", optional: true},
-     {:absinthe, "~> 1.4", optional: true},
-     {:absinthe_ecto, "~> 0.1", optional: true},
+     {:absinthe, "~> 1.4"},
+     {:absinthe_ecto, "~> 0.1"},
 
      # Documentation dependencies
      {:ex_doc, "~> 0.12", only: :docs},
